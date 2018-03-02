@@ -27,7 +27,7 @@ export default class Nav extends React.Component{
 
 				nav = (
 					<nav className="nav-default">
-						<Logo />
+						<Logo imagen={this.props.imagen}/>
 						<Menu tipo={this.props.tipo} lista={this.props.lista}/>
 						<Social tipo={this.props.tipo} redes={this.props.redes}/>
 					</nav>
@@ -68,7 +68,7 @@ class Menu extends React.Component{
 
 			<ul>
 				{
-					lista.map(elemento => <li><a href={elemento}>{elemento}</a></li>)
+					lista.map(elemento => <li key={"li"+elemento}><a href={elemento}>{elemento}</a></li>)
 				}
 			</ul>
 
@@ -85,27 +85,37 @@ class Social extends React.Component{
 	detectarRed(red){
 		// Recibe el nombre de la red social para devolver el icono y el link
 
-		var link;
+		var link,
+			icon;
 
 		switch(red){
 			case 'twitter':
-				link = "twiter.com";
+				link = "https://twitter.com";
+				icon = "icon-twitter";
 				break;
 
 			case 'facebook':
-				link = "facebook.com";
+				link = "https://facebook.com";
+				icon = "icon-facebook";
 				break;
 
 			case 'instagram':
-				link = "instagram.com";
+				link = "https://instagram.com";
+				icon = "icon-instagram";
+				break;
+
+			case 'youtube':
+				link = "https://instagram.com";
+				icon = "icon-youtube";
 				break;
 
 			default:
 				link = "#";
+				icon = "";
 				break;
 		}
 
-		return <li><a href={link}> {red} </a></li>;
+		return <li key={"li"+link}><a href={link} ><i className={"icon " + icon}></i></a></li>;
 	}
 
 	render(){
