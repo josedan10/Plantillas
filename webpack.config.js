@@ -1,4 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
+
+// ...
+require('rollup-plugin-replace')({
+'process.env.NODE_ENV': JSON.stringify('production')
+});
+require('rollup-plugin-commonjs')();
+require('rollup-plugin-uglify')();
+// ...
+// 
 
 const config = {
 
@@ -40,6 +50,14 @@ const config = {
 		    }
 	    ]
 	},
+
+	// plugins: [
+
+	// 	new webpack.DefinePlugin({
+	// 	  'process.env.NODE_ENV': JSON.stringify('production')
+	// 	}),
+	// 	new webpack.optimize.UglifyJsPlugin()
+	// ]
 
 }
 

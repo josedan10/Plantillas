@@ -27,8 +27,8 @@ export default class Nav extends React.Component{
 
 				nav = (
 					<nav className="nav-default">
-						<Logo imagen={this.props.imagen}/>
-						<Menu tipo={this.props.tipo} lista={this.props.lista}/>
+						<Logo logo={this.props.logo}/>
+						<Menu tipo={this.props.tipo} links={this.props.links}/>
 						<Social tipo={this.props.tipo} redes={this.props.redes}/>
 					</nav>
 				);
@@ -49,7 +49,7 @@ class Logo extends React.Component{
 	}
 
 	render(){
-		return <img src={this.props.imagen} />;
+		return <img src={this.props.logo} />;
 	}
 }
 
@@ -62,13 +62,13 @@ class Menu extends React.Component{
 	}
 
 	render(){
-		const lista = this.props.lista;
+		const links = this.props.links;
 
 		return (
 
 			<ul>
 				{
-					lista.map(elemento => <li key={"li"+elemento}><a href={elemento}>{elemento}</a></li>)
+					links.map(elemento => <li key={"li"+elemento}><a href={elemento}>{elemento}</a></li>)
 				}
 			</ul>
 
