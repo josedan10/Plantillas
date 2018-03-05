@@ -15,7 +15,7 @@ export default class Timer extends React.Component {
 	}
 
 	tiempoRestante() {
-		var date = this.state.fecha + 'T'+this.state.horaFinal + ':00-04:00';
+		var date = this.state.fecha + 'T' + this.state.horaFinal + ':00-04:00';
 
 		var diaEvento = new Date(date),
 			hoy = new Date();

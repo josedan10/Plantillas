@@ -1,0 +1,29 @@
+.slideshow{
+    display: block;
+    width: 80%;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #f3f1f4;
+}
+
+.slideshow-container-controls{
+    width: 100%;
+
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+.slideshow-control{
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: #111111;
+    border-style: solid;
+    border-width: 1px;
+    border-color: blue;
+}

@@ -40,7 +40,7 @@ class SlideContainer extends React.Component {
 			<div className='slideshow-container'>
 				{this.props.elementos.map(elemento => {
 					if (i == this.props.active) {
-						slide = <SlideElement active={'active '} key={'unique-' + i++} datos={elemento}/>;
+						slide = <SlideElement active={'slide-active '} key={'unique-' + i++} datos={elemento}/>;
 					} else {
 						slide = <SlideElement active={''} key={'unique-' + i++} datos={elemento}/>
 					}
@@ -113,7 +113,7 @@ class ContainerControls extends React.Component {
 	render() {
 
 		return (
-			<div className='slideshow-controls'>
+			<div className='slideshow-container-controls'>
 				<ul>
 					{this.crearControles()}
 				</ul>
@@ -129,10 +129,35 @@ class SlideControl extends React.Component {
 
 	}
 
+	cambiarSlideElement(e) {
+		
+		let controls,
+			indice;
+
+		// Cambiamos el control
+		$('.control-active').removeClass('control-active');
+		e.target.classList.add('control-active');
+
+		// Cambiamos el slide
+		$('.slide-active').removeClass('slide-active');
+		controls = $('.slideshow-control');
+
+		// Buscamos el índice del control activo
+		for (let i = 0; i < controls.length; i++) {
+			console.log(controls[i].classList);
+			if (controls[i].classList.contains('control-active')) {
+				indice = i;
+				break;
+			}
+		}	
+
+		$('.slideshow-element')[indice].classList.add('active-slide');
+	}
+
 	render() {
 		const estado = (this.props.estado == 'active') ? 'control-active ' : '';
 
-		return <li><i className={estado + 'slideshow-control'} /></li>;
+		return <li className={estado + 'slideshow-control'} onClick={this.cambiarSlideElement} />;
 	}
 }
 
