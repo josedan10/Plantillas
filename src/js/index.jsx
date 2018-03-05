@@ -1,35 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import ModuloCompra from './modulo-de-compras';
 import Nav from './nav/nav';
+import SlideShow from './slideshow/slideshow';
 import Timer from './timer/timer';
 
-$(document).ready(function(){
+$(document).ready(function () {
 
 
 	// Links para el menu y las redes
 	const links = ['Inicio', 'About Me', 'Contacto', 'Blog', 'Catálogo'];
-	const redes = [
-		'twitter': 'twitter.com',
-		'facebook': 'facebook.com',
-		'instagram': 'instagram.com'
+	const redes = ['twitter', 'facebook', 'instagram'];
+
+	// Imagen del logo
+	const logo = 'src/img/meCaricautre.jpg'; 					
+
+	// Datos para el timer
+	const timer = {
+		fecha: '2018-06-22', horaFinal: '00:00'					
+	};
+
+	const slideshow = [
+		{
+			titulo: 'Titulo del Evento 1',
+			texto: 'Lorem Ipsum Dolor',
+			imagen: '',
+			id: 0
+		},
+		{
+			titulo: 'Titulo del Evento 2',
+			texto: 'Lorem Ipsum Dolor 2',
+			imagen: '',
+			id: 0
+		},
+		{
+			titulo: 'Titulo del Evento 3',
+			texto: 'Lorem Ipsum Dolor 3',
+			imagen: '',
+			id: 0
+		}
 	];
 
-	const logo = 'src/img/meCaricautre.jpg'; 					//Imagen del logo
+	var i = 0;
 
-	const timer = {
-		fecha: '2018-06-22', horaFinal: '00:00'					//Datos para el timer
-	};	
+	for (let index in slideshow) {
+		slideshow[index].id = i++;
+	}
 
 	ReactDOM.render(
 		<div id='main'>
 			<Nav tipo='nav-default' logo={logo} redes={redes} links={links} />
+			<SlideShow elementos={slideshow}/>
 		</div>
 		,
 		document.getElementById('app')
 	);
 
-	function tick(){
+	function tick() {
 		ReactDOM.render(
 			<Timer fecha={timer.fecha} horaFinal={timer.horaFinal} />,
 			document.getElementById('timer')

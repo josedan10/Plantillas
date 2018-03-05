@@ -2,11 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 
 // ...
-require('rollup-plugin-replace')({
-'process.env.NODE_ENV': JSON.stringify('production')
-});
-require('rollup-plugin-commonjs')();
-require('rollup-plugin-uglify')();
+// require('rollup-plugin-replace')({
+// 'process.env.NODE_ENV': JSON.stringify('production')
+// });
+// require('rollup-plugin-commonjs')();
+// require('rollup-plugin-uglify')();
 // ...
 // 
 
@@ -51,6 +51,19 @@ const config = {
 	    ]
 	},
 
+	devServer: {
+		host: '0.0.0.0',
+		port: 3000,
+		inline: true
+	},
+
+	devtool: 'source-map',
+
+	plugins: [
+		new webpack.LoaderOptionsPlugin({
+		  debug: true
+		})
+	  ]
 	// plugins: [
 
 	// 	new webpack.DefinePlugin({
