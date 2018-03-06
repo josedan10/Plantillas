@@ -1,5 +1,0 @@
-<?php 
-
-	echo('Orden Recibida');
-
-?>

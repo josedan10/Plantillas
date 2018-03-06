@@ -17,7 +17,7 @@ const config = {
 	output: {
 	    path: path.resolve(__dirname, 'dist'),
 	    publicPath: '/dist/',
-	    filename: 'bundle.min.js' //Archivo de salida
+	    filename: 'bundle.min.js' // Archivo de salida
 	},
 
 	resolve: {
@@ -29,11 +29,11 @@ const config = {
 		    {
 		        test: /\.scss$/,
 		        use: [{
-		                loader: "style-loader" // creates style nodes from JS strings
+		                loader: 'style-loader' // creates style nodes from JS strings
 		            }, {
-		                loader: "css-loader" // translates CSS into CommonJS
+		                loader: 'css-loader' // translates CSS into CommonJS
 		            }, {
-		                loader: "sass-loader" // compiles Sass to CSS
+		                loader: 'sass-loader' // compiles Sass to CSS
 		            }],
 		        exclude: /node_modules/
 		    },
@@ -42,7 +42,7 @@ const config = {
 		        test: /\.jsx$/,
 		        exclude: /(node_modules|bower_components)/,
 		        use: [{
-		          	loader:'babel-loader',
+		          	loader: 'babel-loader',
 		          	options: {
 		              	presets: ['react', 'env', 'es2015']
 		          	}
@@ -52,17 +52,17 @@ const config = {
 	},
 
 	devServer: {
-        contentBase: path.join(__dirname, './dist/'),
-        port: 9000
-    },
+		contentBase: path.join(__dirname, './dist/'),
+		port: 9000
+	},
 
-	devtool: 'source-map',
+	devtool: 'inline-source-map',
 
 	plugins: [
 		new webpack.LoaderOptionsPlugin({
 		  debug: true
 		})
-	  ]
+	]
 	// plugins: [
 
 	// 	new webpack.DefinePlugin({
@@ -70,7 +70,6 @@ const config = {
 	// 	}),
 	// 	new webpack.optimize.UglifyJsPlugin()
 	// ]
-
-}
+};
 
 module.exports = config;
