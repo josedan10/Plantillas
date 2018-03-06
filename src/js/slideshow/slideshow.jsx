@@ -7,6 +7,12 @@ export default class Slideshow extends React.Component {
 		this.state = {
 			active: 0
 		};
+		this.tick = null;
+	}
+
+	autoSlide() {
+		
+		this.tick = setInterval(this.avanzarSlide(), 4000);
 	}
 
 	devolverSlide() {
@@ -83,10 +89,14 @@ export default class Slideshow extends React.Component {
 	}
 
 	slideByArrow(e) {
+		clearInterval(this.tick);
+
 		if (e.target.classList.contains('icon-navigate_before'))
 			this.devolverSlide();
 		else
 			this.avanzarSlide();
+
+		this.autoSlide();
 	}
 
 	slideByControl(e) {
@@ -96,6 +106,8 @@ export default class Slideshow extends React.Component {
 
 		var slideActive,
 			slides = $('.slideshow-element');
+
+		// clearInterval(this.tick);
 
 		// Verificamos que el control no sea el que está activo
 		if (!e.target.classList.contains('control-active')) {
@@ -120,6 +132,8 @@ export default class Slideshow extends React.Component {
 			this.setState({
 				active: indice
 			});
+
+			// this.autoSlide();
 	
 			// slideActive = $('.slideshow-element')[indice];
 			// slideActive.classList.add('slideshow-active-element');
@@ -133,6 +147,8 @@ export default class Slideshow extends React.Component {
 	render() {
 
 		let slideshow;
+
+		// this.autoSlide();
 
 		slideshow = (
 			<div className='slideshow'>
@@ -200,8 +216,8 @@ class SlideElement extends React.Component {
 		}
 
 		const styles = {
-			backgroundImage: this.datos.imagen,
-			display: disp
+			backgroundImage: this.datos.imagen
+			// display: disp
 		};
 
 		if (!(this.datos.titulo === null)) {
