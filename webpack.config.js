@@ -1,23 +1,20 @@
 const path = require('path');
-const webpack = require('webpack');
-
-// ...
-// require('rollup-plugin-replace')({
-// 'process.env.NODE_ENV': JSON.stringify('production')
-// });
-// require('rollup-plugin-commonjs')();
-// require('rollup-plugin-uglify')();
-// ...
-// 
+// const webpack = require('webpack');
 
 const config = {
 
-	entry: './src/js/index.jsx',
+	// entry: './src/js/index.jsx',
+	entry: {
+		index: './src/js/index.jsx',
+		timer: './src/js/timer.config.jsx',
+		slideshow: './src/js/slideshow.config.jsx'
+		// slideshow: './src/js/slideshow/swiper-js/source/jquery.slides.js'
+	},
 
 	output: {
 	    path: path.resolve(__dirname, 'dist'),
 	    publicPath: '/dist/',
-	    filename: 'bundle.min.js' // Archivo de salida
+	    filename: '[name].min.js' // Archivo de salida
 	},
 
 	resolve: {
@@ -52,24 +49,19 @@ const config = {
 	},
 
 	devServer: {
-		contentBase: path.join(__dirname, './dist/'),
-		port: 9000
+		contentBase: path.join(__dirname, './'),
+		port: 8080
 	},
 
 	devtool: 'inline-source-map',
 
-	plugins: [
-		new webpack.LoaderOptionsPlugin({
-		  debug: true
-		})
-	]
-	// plugins: [
+	optimization: {
 
-	// 	new webpack.DefinePlugin({
-	// 	  'process.env.NODE_ENV': JSON.stringify('production')
-	// 	}),
-	// 	new webpack.optimize.UglifyJsPlugin()
-	// ]
+	},
+
+	plugins: [
+		
+	]
 };
 
 module.exports = config;
