@@ -15,7 +15,7 @@ export default class Slideshow extends React.Component {
 
 		slideshow = (
 			<div className='slideshow'>
-				<SlideContainer elementos={this.props.elementos} active={this.state.active}/>
+				<SlideContainer elementos={this.props.elementos} active={this.state.active} efecto={this.props.efecto}/>
 				<SlideArrows />
 				<ContainerControls length='3' active={this.state.active} />
 			</div>
@@ -149,9 +149,12 @@ class SlideControl extends React.Component {
 				indice = i;
 				break;
 			}
-		}	
+		}
 
 		$('.slideshow-element')[indice].classList.add('active-slide');
+		
+		// Efectos para el slideshow
+
 	}
 
 	render() {

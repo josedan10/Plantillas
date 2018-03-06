@@ -52,10 +52,9 @@ const config = {
 	},
 
 	devServer: {
-		host: '0.0.0.0',
-		port: 3000,
-		inline: true
-	},
+        contentBase: path.join(__dirname, './dist/'),
+        port: 9000
+    },
 
 	devtool: 'source-map',
 

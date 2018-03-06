@@ -40,6 +40,13 @@ $(document).ready(function () {
 		}
 	];
 
+	const configSlideShow = {
+		intervalo: 5000,	// Tiempo que demora en cambiar de un slide a otro (milisegundos)
+		efecto: 'fade',		// Opciones: fade, slide
+		delayEfecto: 1000	// Tiempo del efecto
+		
+	};
+
 	var i = 0;
 
 	for (let index in slideshow) {
@@ -49,7 +56,7 @@ $(document).ready(function () {
 	ReactDOM.render(
 		<div id='main'>
 			<Nav tipo='nav-default' logo={logo} redes={redes} links={links} />
-			<SlideShow elementos={slideshow}/>
+			<SlideShow elementos={slideshow} config={configSlideShow}/>
 		</div>
 		,
 		document.getElementById('app')
