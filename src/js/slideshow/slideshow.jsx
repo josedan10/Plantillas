@@ -89,14 +89,14 @@ export default class Slideshow extends React.Component {
 	}
 
 	slideByArrow(e) {
-		clearInterval(this.tick);
+		// clearInterval(this.tick);
 
 		if (e.target.classList.contains('icon-navigate_before'))
 			this.devolverSlide();
 		else
 			this.avanzarSlide();
 
-		this.autoSlide();
+		// this.autoSlide();
 	}
 
 	slideByControl(e) {
