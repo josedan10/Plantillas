@@ -27,7 +27,7 @@ $(document).ready(function () {
 	const configSlideShow = {
 		intervalo: 5000,	// Tiempo que demora en cambiar de un slide a otro (milisegundos)
 		efecto: 'fade',		// Opciones: fade, slide
-		delayEfecto: 1000	// Tiempo del efecto
+		delayEfecto: 700	// Tiempo del efecto
 		
 	};
 

@@ -9,15 +9,136 @@ export default class Slideshow extends React.Component {
 		};
 	}
 
+	devolverSlide() {
+		
+		let cambio,
+			controls = $('.slideshow-control'),
+			indice,
+			siguiente,
+			slideActual = $('.slideshow-active-element'),
+			slides = $('.slideshow-element');
+		
+		for (indice = 0; indice < slides.length; indice++) {
+			if (slides[indice].classList.contains('slideshow-active-element'))
+				break;
+		}
+
+		cambio = indice - 1;
+
+		if (cambio == -1) {
+			siguiente = slides.length - 1;
+		} else {
+			siguiente = cambio;
+		}
+
+		this.setState({
+			active: siguiente
+		});
+
+		// Efectos
+		// slideActual.fadeOut(0);
+		// slideActual.removeClass('slideshow-active-element');
+		// controls.removeClass('control-active');
+
+		// slides[siguiente].classList.add('slideshow-active-element');
+		// controls[siguiente].classList.add('control-active');
+		// $('.slideshow-active-element').fadeIn(700);
+	}
+
+	avanzarSlide() {
+		let cambio,
+			controls = $('.slideshow-control'),
+			indice,
+			siguiente,
+			slideActual = $('.slideshow-active-element'),
+			slideSiguiente,
+			slides = $('.slideshow-element');
+		
+		for (indice = 0; indice < slides.length; indice++) {
+			if (slides[indice].classList.contains('slideshow-active-element'))
+				break;
+		}
+
+		cambio = indice + 1;
+
+		if (cambio == slides.length) {
+			siguiente = 0;
+		} else {
+			siguiente = cambio;
+		}
+
+		// Efectos
+		this.setState({
+			active: siguiente
+		});
+
+		// slideActual.fadeOut(0);
+		// slideActual.removeClass('slideshow-active-element');
+		// controls.removeClass('control-active');
+
+		// slides[siguiente].classList.add('slideshow-active-element');
+		// controls[siguiente].classList.add('control-active');
+		// slideSiguiente = $('.slideshow-active-element');
+		// slideSiguiente.fadeIn(700);
+	}
+
+	slideByArrow(e) {
+		if (e.target.classList.contains('icon-navigate_before'))
+			this.devolverSlide();
+		else
+			this.avanzarSlide();
+	}
+
+	slideByControl(e) {
+		
+		let controls,
+			indice;
+
+		var slideActive,
+			slides = $('.slideshow-element');
+
+		// Verificamos que el control no sea el que está activo
+		if (!e.target.classList.contains('control-active')) {
+			// Cambiamos el control
+			$('.control-active').removeClass('control-active');
+			e.target.classList.add('control-active');
+	
+			slides.fadeOut(0);	// Efecto del slideshow
+			
+			// Cambiamos el slide
+			slides.removeClass('slideshow-active-element');
+			controls = $('.slideshow-control');
+	
+			// Buscamos el índice del control activo
+			for (let i = 0; i < controls.length; i++) {
+				if (controls[i].classList.contains('control-active')) {
+					indice = i;
+					break;
+				}
+			}
+
+			this.setState({
+				active: indice
+			});
+	
+			// slideActive = $('.slideshow-element')[indice];
+			// slideActive.classList.add('slideshow-active-element');
+			
+
+			// slideActive = $('.slideshow-active-element');
+			// slideActive.fadeIn(700);	// Efectos para el slideshow
+		}
+	}
+
 	render() {
 
 		let slideshow;
 
 		slideshow = (
 			<div className='slideshow'>
-				<SlideContainer elementos={this.props.elementos} active={this.state.active} efecto={this.props.efecto}/>
-				<SlideArrows />
-				<ContainerControls length='3' active={this.state.active} />
+				<SlideContainer elementos={this.props.elementos} active={this.state.active} delayEfecto={this.props.config.delayEfecto}/>
+				<SlideArrows onClick={this.slideByArrow.bind(this)}/>
+				<ContainerControls length='3' active={this.state.active} onClick={this.slideByControl.bind(this)}/>
 			</div>
 		);
 
@@ -40,9 +161,9 @@ class SlideContainer extends React.Component {
 			<div className='slideshow-container-slides'>
 				{this.props.elementos.map(elemento => {
 					if (i == this.props.active) {
-						slide = <SlideElement active={' slideshow-active-element'} key={'unique-' + i++} datos={elemento}/>;
+						slide = <SlideElement active={' slideshow-active-element'} key={'unique-' + i++} datos={elemento} delayEfecto={this.props.efecto}/>;
 					} else {
-						slide = <SlideElement active={''} key={'unique-' + i++} datos={elemento}/>;
+						slide = <SlideElement active={''} key={'unique-' + i++} datos={elemento} delayEfecto={this.props.efecto}/>;
 					}
 
 					return slide;
@@ -116,9 +237,9 @@ class ContainerControls extends React.Component {
 
 		for (let i = 0; i < this.props.length; i++) {
 			if (i == this.props.active) {
-				controles.push(<SlideControl key={'control-' + i.toString()} estado='active' />);
+				controles.push(<SlideControl key={'control-' + i.toString()} estado='active' onClick={this.props.onClick}/>);
 			} else {
-				controles.push(<SlideControl key={'control-' + i.toString()} estado='disable' />);
+				controles.push(<SlideControl key={'control-' + i.toString()} estado='disable' onClick={this.props.onClick}/>);
 			}
 		}
 
@@ -144,47 +265,10 @@ class SlideControl extends React.Component {
 
 	}
 
-	cambiarSlideElement(e) {
-		
-		let controls,
-			indice;
-
-		var slideActive,
-			slides = $('.slideshow-element');
-
-		// Verificamos que el control no sea el que está activo
-		if (!e.target.classList.contains('control-active')) {
-			// Cambiamos el control
-			$('.control-active').removeClass('control-active');
-			e.target.classList.add('control-active');
-	
-			slides.fadeOut(0);	// Efecto del slideshow
-			
-			// Cambiamos el slide
-			slides.removeClass('slideshow-active-element');
-			controls = $('.slideshow-control');
-	
-			// Buscamos el índice del control activo
-			for (let i = 0; i < controls.length; i++) {
-				if (controls[i].classList.contains('control-active')) {
-					indice = i;
-					break;
-				}
-			}
-	
-			slideActive = $('.slideshow-element')[indice];
-			slideActive.classList.add('slideshow-active-element');
-			
-
-			slideActive = $('.slideshow-active-element');
-			slideActive.fadeIn(700);	// Efectos para el slideshow
-		}
-	}
-
 	render() {
 		const estado = (this.props.estado == 'active') ? 'control-active ' : '';
 
-		return <li className={estado + 'slideshow-control'} onClick={this.cambiarSlideElement} />;
+		return <li className={estado + 'slideshow-control'} onClick={this.props.onClick} />;
 	}
 }
 
@@ -193,77 +277,12 @@ class SlideArrows extends React.Component {
 		super(props);
 	}
 
-	devolverSlide() {
-		
-		let cambio,
-			controls = $('.slideshow-control'),
-			indice,
-			siguiente,
-			slideActual = $('.slideshow-active-element'),
-			slides = $('.slideshow-element');
-		
-		for (indice = 0; indice < slides.length; indice++) {
-			if (slides[indice].classList.contains('slideshow-active-element'))
-				break;
-		}
-
-		cambio = indice - 1;
-
-		if (cambio == -1) {
-			siguiente = slides.length - 1;
-		} else {
-			siguiente = cambio;
-		}
-
-		// Efectos
-		slideActual.fadeOut(0);
-		slideActual.removeClass('slideshow-active-element');
-		controls.removeClass('control-active');
-
-		slides[siguiente].classList.add('slideshow-active-element');
-		controls[siguiente].classList.add('control-active');
-		$('.slideshow-active-element').fadeIn(700);
-	}
-
-	avanzarSlide() {
-		let cambio,
-			controls = $('.slideshow-control'),
-			indice,
-			siguiente,
-			slideActual = $('.slideshow-active-element'),
-			slideSiguiente,
-			slides = $('.slideshow-element');
-		
-		for (indice = 0; indice < slides.length; indice++) {
-			if (slides[indice].classList.contains('slideshow-active-element'))
-				break;
-		}
-
-		cambio = indice + 1;
-
-		if (cambio == slides.length) {
-			siguiente = 0;
-		} else {
-			siguiente = cambio;
-		}
-
-		// Efectos
-		slideActual.fadeOut(0);
-		slideActual.removeClass('slideshow-active-element');
-		controls.removeClass('control-active');
-
-		slides[siguiente].classList.add('slideshow-active-element');
-		controls[siguiente].classList.add('control-active');
-		slideSiguiente = $('.slideshow-active-element');
-		slideSiguiente.fadeIn(700);
-	}
-
 	render() {
 
 		return (
 			<div className='slideshow-arrows'>
-				<i className='icon icon-navigate_before' onClick={this.devolverSlide}/>
-				<i className='icon icon-navigate_next' onClick={this.avanzarSlide}/>
+				<i className='icon icon-navigate_before' onClick={this.props.onClick}/>
+				<i className='icon icon-navigate_next' onClick={this.props.onClick}/>
 			</div>
 		);
 	}
