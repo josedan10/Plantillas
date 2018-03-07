@@ -6,8 +6,8 @@ $(document).ready(function () {
 
 
 	// Links para el menu y las redes
-	const links = ['Inicio', 'About Me', 'Contacto', 'Blog', 'Catálogo'];
-	const redes = ['twitter', 'facebook', 'instagram'];
+	const links = ['Inicio', 'About Me', 'Contacto', 'Blog'];
+	const redes = ['twitter', 'facebook', 'instagram', 'youtube'];
 
 	// Imagen del logo
 	const logo = 'src/img/meCaricautre.jpg'; 					

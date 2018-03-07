@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "webpack --mode development",
+    "test": "webpack --watch --mode development",
     "prod": "webpack --mode production",
     "server": "webpack-dev-server --mode development --open"
   },

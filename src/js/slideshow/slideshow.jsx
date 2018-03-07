@@ -10,9 +10,17 @@ export default class Slideshow extends React.Component {
 		this.tick = null;
 	}
 
-	autoSlide() {
-		
-		this.tick = setInterval(this.avanzarSlide(), 4000);
+	componentDidMount() {
+		this.tick = setInterval(this.avanzarSlide.bind(this), 5000);
+	}
+
+	componentDidUpdate() {
+		clearInterval(this.tick);
+		this.tick = setInterval(this.avanzarSlide.bind(this), 5000);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.tick);
 	}
 
 	devolverSlide() {
@@ -43,11 +51,11 @@ export default class Slideshow extends React.Component {
 
 		// Efectos
 		// slideActual.fadeOut(0);
-		// slideActual.removeClass('slideshow-active-element');
-		// controls.removeClass('control-active');
+		slideActual.removeClass('slideshow-active-element');
+		controls.removeClass('control-active');
 
-		// slides[siguiente].classList.add('slideshow-active-element');
-		// controls[siguiente].classList.add('control-active');
+		slides[siguiente].classList.add('slideshow-active-element');
+		controls[siguiente].classList.add('control-active');
 		// $('.slideshow-active-element').fadeIn(700);
 	}
 
@@ -79,24 +87,22 @@ export default class Slideshow extends React.Component {
 		});
 
 		// slideActual.fadeOut(0);
-		// slideActual.removeClass('slideshow-active-element');
-		// controls.removeClass('control-active');
+		slideActual.removeClass('slideshow-active-element');
+		controls.removeClass('control-active');
 
-		// slides[siguiente].classList.add('slideshow-active-element');
-		// controls[siguiente].classList.add('control-active');
+		slides[siguiente].classList.add('slideshow-active-element');
+		controls[siguiente].classList.add('control-active');
 		// slideSiguiente = $('.slideshow-active-element');
 		// slideSiguiente.fadeIn(700);
 	}
 
 	slideByArrow(e) {
-		// clearInterval(this.tick);
-
 		if (e.target.classList.contains('icon-navigate_before'))
 			this.devolverSlide();
 		else
 			this.avanzarSlide();
 
-		// this.autoSlide();
+		this.componentDidUpdate();
 	}
 
 	slideByControl(e) {
@@ -115,7 +121,7 @@ export default class Slideshow extends React.Component {
 			$('.control-active').removeClass('control-active');
 			e.target.classList.add('control-active');
 	
-			slides.fadeOut(0);	// Efecto del slideshow
+			// slides.fadeOut(0);	// Efecto del slideshow
 			
 			// Cambiamos el slide
 			slides.removeClass('slideshow-active-element');
@@ -135,12 +141,13 @@ export default class Slideshow extends React.Component {
 
 			// this.autoSlide();
 	
-			// slideActive = $('.slideshow-element')[indice];
-			// slideActive.classList.add('slideshow-active-element');
+			slideActive = $('.slideshow-element')[indice];
+			slideActive.classList.add('slideshow-active-element');
 			
-
 			// slideActive = $('.slideshow-active-element');
 			// slideActive.fadeIn(700);	// Efectos para el slideshow
+
+			this.componentDidUpdate();
 		}
 	}
 
