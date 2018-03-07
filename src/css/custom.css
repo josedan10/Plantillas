@@ -25,13 +25,9 @@ aside.right {
     transition: all .7s ease; }
     aside.left:hover nav ul:first-child,
     aside.right:hover nav ul:first-child {
-      left: 0px;
-      transition: all .7s ease; }
-    aside.left:hover nav ul:last-child,
-    aside.right:hover nav ul:last-child {
-      position: relative;
-      right: -50px;
-      transition: all .7s ease; }
+      width: 100px;
+      opacity: 1;
+      transition: opacity .7 ease; }
 
 .right {
   right: 0; }
@@ -100,21 +96,16 @@ nav.nav-left {
   nav.nav-left div {
     display: flex;
     min-width: 100%;
-    overflow: hidden;
-    position: relative; }
+    justify-content: space-between;
+    align-items: center; }
     nav.nav-left div ul {
       flex-direction: column;
       align-items: center; }
       nav.nav-left div ul:first-child {
-        position: relative;
-        left: -70px;
-        width: 100px;
+        width: 0;
+        opacity: 0;
+        overflow: hidden;
         transition: all .7s ease; }
-      nav.nav-left div ul:last-child {
-        color: white;
-        position: absolute;
-        left: 50px;
-        transition: all .7s linear; }
 
 nav.nav-right {
   top: 0;

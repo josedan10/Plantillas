@@ -28,14 +28,9 @@ aside.right {
 		transition: all .7s ease;
 		ul{	
 			&:first-child{
-				left: 0px;
-				transition: all .7s ease;
-			}
-
-			&:last-child {
-				position: relative;
-				right: -50px;
-				transition: all .7s ease;
+				width: 100px;
+				opacity: 1;
+				transition: opacity .7 ease;
 			}
 		}
 	}
