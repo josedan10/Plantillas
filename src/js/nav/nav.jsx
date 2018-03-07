@@ -54,7 +54,6 @@ class Logo extends React.Component {
 }
 
 
-
 class Menu extends React.Component {
 	constructor(props) {
 		super(props);

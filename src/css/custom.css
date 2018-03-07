@@ -13,6 +13,29 @@ body {
 main {
   width: 100%; }
 
+aside.left,
+aside.right {
+  height: 100vh;
+  width: 200px;
+  position: fixed;
+  z-index: 300; }
+  aside.left:hover nav,
+  aside.right:hover nav {
+    width: 100%;
+    transition: all .7s ease; }
+    aside.left:hover nav ul:first-child,
+    aside.right:hover nav ul:first-child {
+      left: 0px;
+      transition: all .7s ease; }
+    aside.left:hover nav ul:last-child,
+    aside.right:hover nav ul:last-child {
+      position: relative;
+      right: -50px;
+      transition: all .7s ease; }
+
+.right {
+  right: 0; }
+
 section {
   height: 100vh;
   padding: 0 70px; }
@@ -30,16 +53,17 @@ section {
   justify-content: center;
   align-items: center; }
 
+#nav {
+  height: 100%;
+  width: 100%; }
+
 nav {
+  display: flex;
   background: #2c143f;
   width: 70px;
   height: 100%;
   padding: 15px 10px;
-  position: fixed;
-  z-index: 300;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
+  transition: all .7s ease; }
   nav img {
     width: 30px;
     height: 30px; }
@@ -60,13 +84,46 @@ nav {
         nav ul li a i {
           margin-right: 3px; }
 
-nav.left {
-  top: 0;
-  left: 0; }
+nav.default {
+  justify-content: space-between;
+  align-items: center; }
 
-nav.right {
+nav.nav-left {
   top: 0;
-  right: 0; }
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  nav.nav-left img {
+    position: fixed;
+    top: 50px; }
+  nav.nav-left div {
+    display: flex;
+    min-width: 100%;
+    overflow: hidden;
+    position: relative; }
+    nav.nav-left div ul {
+      flex-direction: column;
+      align-items: center; }
+      nav.nav-left div ul:first-child {
+        position: relative;
+        left: -70px;
+        width: 100px;
+        transition: all .7s ease; }
+      nav.nav-left div ul:last-child {
+        color: white;
+        position: absolute;
+        left: 50px;
+        transition: all .7s linear; }
+
+nav.nav-right {
+  top: 0;
+  right: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  nav.nav-right ul {
+    flex-direction: column; }
 
 .menu .grid-container {
   padding: 10px;

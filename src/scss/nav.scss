@@ -1,16 +1,16 @@
-nav{
+#nav{
+	height: 100%;
+	width: 100%;
+}
 
+nav{
+	display: flex;
 	background: #2c143f;
 	width: 70px;
 	height: 100%;
 	padding: 15px 10px;
-	position: fixed;
-	z-index: 300;
 
-
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	transition: all .7s ease;
 
 	img{
 		width: 30px;
@@ -50,12 +50,58 @@ nav{
 	}
 }
 
-nav.left{
-	top: 0;
-	left: 0;
+nav.default{
+	justify-content: space-between;
+	align-items: center;
 }
 
-nav.right{
+nav.nav-left{
+	top: 0;
+	left: 0;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	img{
+		position: fixed;
+		top: 50px;
+	}
+
+	div{
+		display:flex;
+		min-width: 100%;
+		overflow: hidden;
+		position: relative;
+
+		ul{
+			flex-direction: column;
+			align-items: center;
+
+			&:first-child{
+				position: relative;
+				left: -70px;
+				width: 100px;
+				transition: all .7s ease;
+			}
+
+			&:last-child {
+				color: white;
+				position: absolute;
+				left: 50px;
+				transition: all .7s linear;
+			}
+		}
+	}
+}
+
+nav.nav-right{
 	top: 0;
 	right: 0;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	ul{
+		flex-direction: column;
+	}
 }
