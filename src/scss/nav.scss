@@ -1,10 +1,11 @@
 nav{
 
-	background: #fafafa;
-
-
-	width: 100%;
+	background: #2c143f;
+	width: 70px;
+	height: 100%;
 	padding: 15px 10px;
+	position: fixed;
+	z-index: 300;
 
 
 	display: flex;
@@ -47,4 +48,14 @@ nav{
 			}
 		}
 	}
+}
+
+nav.left{
+	top: 0;
+	left: 0;
+}
+
+nav.right{
+	top: 0;
+	right: 0;
 }

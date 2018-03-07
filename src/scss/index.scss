@@ -12,11 +12,38 @@ body{
 	background: #a5a5a5;
 }
 
-#app{
+main{
 	width: 100%;
+}
+
+section{
+	height: 100vh;
+	padding: 0 70px;
+	
+	& > div {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.grid-container{
 	display: grid;
 }
 
+.flex-center{
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
 @import 'nav';
-@import 'timer';
+@import 'menu-collage';
+@import 'services';
+@import 'selected-works';
+@import 'own-community';
+@import 'team';
+@import 'clientes';	
+// @import 'timer';
 @import 'slideshow';

@@ -1,0 +1,11 @@
+.clientes {
+    .grid-container {
+        padding: 20px 30px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        
+        div {
+            border: solid 1px black;
+        }
+    }
+}

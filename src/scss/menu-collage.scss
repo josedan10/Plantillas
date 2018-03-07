@@ -1,0 +1,14 @@
+.menu { 
+
+    .grid-container {
+
+        padding: 10px;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        div {
+            background-color: #f2f2f2;
+        }
+    }
+}

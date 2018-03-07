@@ -21,5 +21,10 @@ $(document).ready(function () {
 		,
 		document.getElementById('app')
 	);
+
+	ReactDOM.render(
+		<FormContact />,
+		document.getElementById('formContact')
+	);
 });
 
