@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
 	// Links para el menu y las redes
-	const links = ['Inicio', 'About Me', 'Contacto', 'Blog'];
+	const links = ['Home', 'Services', 'Works', 'Community', 'Team', 'Contact'];
 	// const redes = ['twitter', 'facebook', 'instagram', 'youtube'];
 
 	// Imagen del logo

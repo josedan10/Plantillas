@@ -26,13 +26,6 @@ aside.right {
 	&:hover nav{
 		width: 100%;
 		transition: all .7s ease;
-		ul{	
-			&:first-child{
-				width: 100px;
-				opacity: 1;
-				transition: opacity .7 ease;
-			}
-		}
 	}
 }
 
