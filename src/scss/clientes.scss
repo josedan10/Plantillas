@@ -1,11 +1,14 @@
 .clientes {
     .grid-container {
         padding: 20px 30px;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+        // grid-auto-rows: 0;
         
         div {
-            border: solid 1px black;
+            // border: solid 1px black;
+            background: #ffffff;
         }
     }
 }

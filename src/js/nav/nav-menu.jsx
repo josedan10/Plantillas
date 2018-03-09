@@ -65,12 +65,7 @@ class Menu extends React.Component {
 			<div>
 				<ul>
 					{
-						links.map(elemento => <li key={'li' + elemento}><a href={'#' + elemento.replace(' ', '_')}>{elemento}</a></li>)
-					}
-				</ul>
-				<ul>
-					{
-						links.map(elemento => <li key={'li-' + elemento}> <a href={'#' + elemento.replace(' ', '_')}> <span/> </a></li>)
+						links.map(elemento => <li key={'li' + elemento}><a href={'#' + elemento.replace(' ', '_')}>{elemento} <span/></a></li>)
 					}
 				</ul>
 			</div>

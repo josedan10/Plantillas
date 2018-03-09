@@ -24,20 +24,24 @@ export default class FormContact extends React.Component {
 	render() {
 		var muestra;
 		let form = (
-			<form>
-				<input type='text' placeholder='First Name and Last Name' required/>
-				<input type='email' placeholder='Email' required/>
-				<input type='phone' placeholder='Phone' required/>
-				<input type='text' placeholder='Address' required/>
-				<textarea name='comentario' placeholder='comment' id='' rows='10' required/>
-				<input type='submit' value='SUBMIT'/>
-			</form>
+			<div className='form-view'>
+				<form className='grid-container'>
+					<input type='text' placeholder='First Name and Last Name' required/>
+					<input type='email' placeholder='Email' required/>
+					<input type='phone' placeholder='Phone' required/>
+					<input type='text' placeholder='Address' required/>
+					<textarea name='comentario' placeholder='comment' id='' rows='10' required/>
+					<input type='submit' value='SUBMIT'/>
+				</form>
+			</div>
 		);
         
 		let correo = (
-			<div>
-				<p>contacto@groowly.com</p>
-				<i className='icon ' />
+			<div className='form-view grid-container'>
+				<div className='flex-center'>
+					<p>contacto@groowly.com</p>
+					<i className='icon ' />
+				</div>
 			</div>
 		);
 
@@ -57,8 +61,10 @@ export default class FormContact extends React.Component {
 				<h1>CONTACT</h1>
 				<p>Comentario genial!</p>
 				<div className='btn-actions'>
-					<button onClick={this.mostrarCorreo.bind(this)}>CONTACT</button>
-					<button onClick={this.mostrarFormulario.bind(this)}>FORM</button>
+					<div className='btn-container'>
+						<button className='flex-center' onClick={this.mostrarCorreo.bind(this)}>CONTACT</button>
+						<button className='flex-center' onClick={this.mostrarFormulario.bind(this)}>FORM</button>
+					</div>
 				</div>
 				{muestra}
 			</div>
