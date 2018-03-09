@@ -3,14 +3,17 @@
 }
 @media (max-width: 768px) { 
     
-    // .services {
-    //     // .grid-container {
-    //     //      padding: 0;
-    //     //      font-size: 14px;
-    //     // }
-    // }
+    .services {
+        .flex-container {
+            div {
+                background-color: purple;
+                width: 40%;
+            }
+        }
+    }
 
     .form-view {
+        min-width: 300px;
         form {
             input::placeholder,
             input {
@@ -20,5 +23,13 @@
     }
 }
 @media (max-width: 480px) { 
+    .services {
+        .flex-container {
+            div {
+                background-color: purple;
+                width: 100%;
+            }
+        }
+    }
 }
  

@@ -9,7 +9,7 @@
 
     .grid-container {
         padding: 30px 0;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: 1fr;
         
         div{
