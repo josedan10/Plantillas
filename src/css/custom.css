@@ -8,7 +8,7 @@
 html,
 body {
   height: 100%;
-  background: #a5a5a5; }
+  background: #2c143f; }
 
 main {
   width: 100%; }
@@ -18,14 +18,10 @@ aside.right {
   height: 100vh;
   position: fixed;
   z-index: 300; }
-  aside.left:hover nav,
-  aside.right:hover nav {
-    width: 100%;
-    transition: all .7s ease; }
 
 .right {
   right: 0;
-  width: 70px;
+  width: 50px;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -33,18 +29,15 @@ aside.right {
     margin-bottom: 15px;
     text-align: center; }
     .right ul li a {
-      color: #f5f5f5;
+      color: #2c143f;
       transition: all .5s ease; }
       .right ul li a:hover {
         color: #35f8a4;
         transition: all .5s ease; }
 
-.left {
-  width: 200px; }
-
 section {
   height: 100vh;
-  padding: 0 70px; }
+  padding: 0 50px; }
   section > div {
     height: 100%;
     width: 100%; }
@@ -60,20 +53,51 @@ section {
   justify-content: center;
   align-items: center; }
 
+.flex-presentation {
+  display: flex;
+  height: 100%; }
+  .flex-presentation .content-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%; }
+  .flex-presentation .default-content {
+    width: 16.66%;
+    transition: all .7s ease; }
+    .flex-presentation .default-content .img {
+      width: 100%;
+      transition: all .7s ease; }
+  .flex-presentation .display-content {
+    width: 80%;
+    transition: all .7s ease; }
+    .flex-presentation .display-content .img,
+    .flex-presentation .display-content .content {
+      width: 50%; }
+    .flex-presentation .display-content .img {
+      transition: all .7s ease; }
+    .flex-presentation .display-content .content {
+      position: absolute;
+      right: 0; }
+  .flex-presentation .reduce-content {
+    width: 4%;
+    transition: all .7s ease; }
+    .flex-presentation .reduce-content .img {
+      width: 100%;
+      transition: all .7s ease; }
+
 #nav {
   height: 100%;
   width: 100%; }
 
 nav {
   display: flex;
-  background: #2c143f;
-  width: 70px;
+  background: #f5f5f5;
+  width: 50px;
   height: 100%;
-  padding: 15px 10px;
+  padding: 20px 10px;
   transition: all .7s ease; }
   nav img {
-    width: 30px;
-    height: 30px; }
+    transform: rotate(-90deg);
+    height: 25px;
+    margin-top: 30px; }
   nav ul {
     list-style: none;
     display: flex; }
@@ -82,7 +106,7 @@ nav {
       width: 100%; }
       nav ul li a {
         text-decoration: none;
-        color: #f5f5f5;
+        color: #2c143f;
         transition: all .5s ease; }
         nav ul li a:hover {
           color: #35f8a4;
@@ -91,6 +115,9 @@ nav {
           color: #00d2e1; }
         nav ul li a i {
           margin-right: 3px; }
+  nav:hover {
+    width: 200px;
+    transition: all .7s ease; }
 
 nav.default {
   justify-content: space-between;
@@ -125,12 +152,12 @@ nav.nav-left {
         font-size: 14px; }
         nav.nav-left div ul li a span {
           display: block;
-          width: 10px;
+          width: 20px;
           height: 2px;
-          background-color: #f5f5f5;
+          background-color: #2c143f;
           position: absolute;
           top: 7px;
-          right: 30px; }
+          right: 15px; }
         nav.nav-left div ul li a:hover {
           color: #35f8a4;
           transition: all .5s ease; }
@@ -149,7 +176,7 @@ nav.nav-right {
     flex-direction: column; }
 
 #social {
-  background: #2c143f;
+  background: #f5f5f5;
   right: 0; }
 
 .menu .grid-container {
@@ -170,7 +197,6 @@ nav.nav-right {
     width: 30%; }
 
 .selected-works .grid-container {
-  padding: 30px 10px;
   grid-gap: 10px;
   overflow: hidden;
   grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
@@ -184,13 +210,6 @@ nav.nav-right {
   z-index: 10;
   color: #f5f5f5;
   padding: 0 70px; }
-.own-community .grid-container {
-  padding: 30px 0;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 1fr; }
-  .own-community .grid-container div {
-    border: solid 1px #5a2561;
-    background-color: rgba(0, 0, 0, 0.7); }
 
 .team h1 {
   text-align: center;
@@ -198,16 +217,25 @@ nav.nav-right {
   z-index: 10;
   color: #f5f5f5;
   padding: 0 70px; }
-.team .grid-container {
-  padding: 30px 0;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr; }
-  .team .grid-container div {
-    border: solid 1px #5a2561;
-    background-color: rgba(0, 0, 0, 0.7); }
+.team .view-content {
+  position: relative;
+  height: 100%; }
+  .team .view-content .img {
+    background-position: top left;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 1; }
+  .team .view-content .content {
+    overflow: hidden;
+    padding: 40px 20px;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 5fr repeat(2fr); }
+    .team .view-content .content .info {
+      grid-row: 2 / 3; }
 
 .clientes .grid-container {
-  padding: 20px 30px;
   grid-gap: 5px;
   grid-template-columns: repeat(4, minmax(200px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)); }

@@ -1,3 +1,8 @@
+// Colores
+// $gris = #ececec;
+// $grisOsc = #595959;
+// $violeta = 230f28
+
 *{
 	padding: 0;
 	margin: 0;
@@ -9,7 +14,7 @@
 html,
 body{
 	height: 100%;
-	background: #a5a5a5;
+	background: #2c143f;
 }
 
 main{
@@ -21,16 +26,11 @@ aside.right {
 	height: 100vh;
 	position: fixed;
 	z-index: 300;
-
-	&:hover nav{
-		width: 100%;
-		transition: all .7s ease;
-	}
 }
 
 .right{
 	right: 0;
-	width: 70px;
+	width: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -41,7 +41,7 @@ aside.right {
 			text-align: center;
 			
 			a {
-				color: #f5f5f5;
+				color: #2c143f;
 				transition: all .5s ease;
 
 				&:hover {
@@ -53,13 +53,9 @@ aside.right {
 	}
 }
 
-.left{
-	width: 200px;
-}
-
 section{
 	height: 100vh;
-	padding: 0 70px;
+	padding: 0 50px;
 	
 	& > div {
 		height: 100%;
@@ -78,6 +74,56 @@ section{
 	text-align: center;
 	justify-content: center;
 	align-items: center;
+}
+
+.flex-presentation {
+	display: flex;
+	height: 100%;
+	
+	.content-container{
+		// border: solid 1px rgb(90, 37, 97);
+		background-color: rgba($color: #000000, $alpha: .7);
+		height: 100%;
+	}
+
+	.default-content {
+		width: 16.66%;
+		transition: all .7s ease;
+
+		.img {
+			width: 100%;
+			transition: all .7s ease;
+		}
+	}
+
+	.display-content {
+		width: 80%;
+		transition: all .7s ease;
+
+		.img,
+		.content {
+			width: 50%;
+		}
+
+		.img {
+			transition: all .7s ease;
+		}
+
+		.content {
+			position: absolute;
+			right: 0;
+		}
+	}
+
+	.reduce-content {
+		width: 4%;
+		transition: all .7s ease;
+
+		.img {
+			width: 100%;
+			transition: all .7s ease;
+		}
+	}
 }
 
 @import 'nav';

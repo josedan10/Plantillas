@@ -7,11 +7,11 @@ $(document).ready(function () {
 
 
 	// Links para el menu y las redes
-	const links = ['Home', 'Services', 'Works', 'Community', 'Team', 'Contact'];
+	const links = ['Home', 'Services', 'Selected Works', 'Own Community', 'Team', 'Contact'];
 	// const redes = ['twitter', 'facebook', 'instagram', 'youtube'];
 
 	// Imagen del logo
-	const logo = 'src/img/meCaricautre.jpg'; 					
+	const logo = 'src/img/logo.png'; 					
 
 	ReactDOM.render(
 		<Nav tipo='nav-left' logo={logo} links={links} />,

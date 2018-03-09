@@ -7,6 +7,7 @@ const config = {
 	entry: {
 		index: './src/js/index.jsx',
 		formContact: './src/js/form-contact.config.jsx',
+		presentation: './src/js/presentation.config.jsx',
 		timer: './src/js/timer.config.jsx',
 		slideshow: './src/js/slideshow.config.jsx'
 		// slideshow: './src/js/slideshow/swiper-js/source/jquery.slides.js'

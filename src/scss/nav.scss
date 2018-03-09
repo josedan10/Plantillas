@@ -5,16 +5,17 @@
 
 nav{
 	display: flex;
-	background: #2c143f;
-	width: 70px;
+	background: #f5f5f5;
+	width: 50px;
 	height: 100%;
-	padding: 15px 10px;
+	padding: 20px 10px;
 
 	transition: all .7s ease;
 
 	img{
-		width: 30px;
-		height: 30px;
+		transform: rotate(-90deg);
+		height: 25px;
+		margin-top: 30px;
 	}
 
 	ul{
@@ -29,7 +30,7 @@ nav{
 				text-decoration: none;
 
 
-				color: #f5f5f5;
+				color: #2c143f;
 				transition: all .5s ease;
 
 				&:hover{
@@ -46,6 +47,11 @@ nav{
 				}
 			}
 		}
+	}
+
+	&:hover {
+		width: 200px;
+		transition: all .7s ease;
 	}
 }
 
@@ -91,12 +97,12 @@ nav.nav-left{
 
 					span{
 						display: block;
-						width: 10px;
+						width: 20px;
 						height: 2px;
-						background-color: #f5f5f5;
+						background-color: #2c143f;
 						position: absolute;
 						top: 7px;
-						right: 30px;
+						right: 15px;
 					}
 
 					&:hover	{

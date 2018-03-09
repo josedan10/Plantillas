@@ -1,6 +1,5 @@
 .clientes {
     .grid-container {
-        padding: 20px 30px;
         grid-gap: 5px;
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));

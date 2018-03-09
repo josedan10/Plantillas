@@ -28,8 +28,8 @@
 			</ul>
 		</aside>
 
-		<section class="home" id="home">
-			<div id="slideshow"></div>
+		<section class="home" id="Home">
+			<!-- <div id="slideshow"></div> -->
 		</section>
 
 		<!-- <section class="menu" id="menu">
@@ -50,7 +50,7 @@
 			</div>
 		</section> -->
 
-		<section class="services" id="services">
+		<section class="services" id="Services">
 			<div class="flex-container">
 				<div class="flex-center">1 <br> Estrategias de <br> comunicación</div>
 				<div class="flex-center">2 <br> Convocatoria <br> de medios</div>
@@ -61,7 +61,7 @@
 			</div>
 		</section>
 
-		<section class="selected-works" id="selectedWorks">
+		<section class="selected-works" id="Works">
 			<div class="grid-container">
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
@@ -78,9 +78,9 @@
 			</div>
 		</section>
 
-		<section class="own-community flex-center" id="ownCommunity">
+		<section class="own-community flex-center" id="Community">
 			<h1>MEET OUR OWN DIGITAL COMMUNITY</h1>
-			<div class="grid-container">
+			<div class="flex-presentation">
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
@@ -89,19 +89,19 @@
 				<div class="flex-center"></div>
 			</div>
 		</section>
-		<section class="team flex-center" id="team">
-			<h1>APRENDE, TRANSFORMA Y CONECTA</h1>
-			<div class="grid-container">
+		<section class="team flex-center" id="Team">
+			<!-- <h1>APRENDE, TRANSFORMA Y CONECTA</h1>
+			<div class="flex-presentation">
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
-			</div>
+			</div> -->
 		</section>
 		
-		<section class="clientes" id="clientes">
+		<section class="clientes" id="Clients">
 			<div class="grid-container">
 				<div class="flex-center"></div>
 				<div class="flex-center"></div>
@@ -118,7 +118,7 @@
 			</div>
 		</section>
 
-		<section class="contacto .flex-center" id="contacto">
+		<section class="contacto .flex-center" id="Contact">
 		</section>
 
 	</main>
@@ -126,9 +126,24 @@
 	<!-- Ruta del modulo que se va a probar -->
 	<script src="src/js/jquery-3.3.1.js"></script>
 	<script src="dist/index.min.js"></script>
+	<script src="dist/presentation.min.js"></script>
 	<!-- <script src="dist/timer.min.js"></script> -->
-	<script src="dist/slideshow.min.js"></script>
+	<!-- <script src="dist/slideshow.min.js"></script> -->
 	<script src="dist/formContact.min.js"></script>
+
+	<script>
+		document.addEventListener('keydown', (event) => {
+			const keyName = event.key;
+
+			if(keyName == 'ArrowDown' || keyName == 'ArrowUp') {
+				event.preventDefault();
+			}
+		}, false);
+
+		window.addEventListener('wheel', (event) => {
+			event.preventDefault();
+		}, false);
+	</script>
 	
 </body>
 </html>
