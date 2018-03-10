@@ -1,7 +1,22 @@
 // Colores
-// $gris = #ececec;
-// $grisOsc = #595959;
-// $violeta = 230f28
+$gris: #ececec;
+$grisOsc: #595959;
+$violeta: #230f28;
+
+// Fuentes
+$font-title: 'BrownStd-Regular', Arial, Helvetica, sans-serif;
+$font-normal: 'BrownStd-Light', Arial, Helvetica, sans-serif;
+
+@font-face {
+	font-family: BrownStd-Regular;
+	src: url('tipografias/BrownStd-Regular.otf');
+
+}
+
+@font-face {
+	font-family: BrownStd-Light;
+	src: url('tipografias/BrownStd-Light.otf');
+}
 
 *{
 	padding: 0;
@@ -9,12 +24,14 @@
 	box-sizing: border-box;
 	list-style: none;
 	text-decoration: none;
+	font-family: $font-normal;
 }
 
 html,
 body{
 	height: 100%;
-	background: #2c143f;
+	background: $violeta;
+	color: $gris;
 }
 
 main{
@@ -41,11 +58,11 @@ aside.right {
 			text-align: center;
 			
 			a {
-				color: #2c143f;
+				color: $grisOsc;
 				transition: all .5s ease;
 
 				&:hover {
-					color: #35f8a4;
+					color: $violeta;
 					transition: all .5s ease;
 				}
 			}

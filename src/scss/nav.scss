@@ -5,8 +5,8 @@
 
 nav{
 	display: flex;
-	background: #f5f5f5;
-	width: 50px;
+	background: $gris;
+	width: 70px;
 	height: 100%;
 	padding: 20px 10px;
 
@@ -30,16 +30,12 @@ nav{
 				text-decoration: none;
 
 
-				color: #2c143f;
+				color: $grisOsc;
 				transition: all .5s ease;
 
 				&:hover{
-					color: #35f8a4;
+					color: $violeta;
 					transition: all .5s ease;
-				}
-
-				&:active{
-					color: #00d2e1;
 				}
 
 				i{
@@ -50,7 +46,7 @@ nav{
 	}
 
 	&:hover {
-		width: 200px;
+		width: 210px;
 		transition: all .7s ease;
 	}
 }
@@ -78,7 +74,7 @@ nav.nav-left{
 		justify-content: space-between;
 		align-items: center;
 		position: absolute;
-		width: 180px;
+		width: 210px;
 		right: 0;
 
 		ul{
@@ -90,32 +86,30 @@ nav.nav-left{
 
 				a {
 					transition: all .7s ease;
-					display: flex;
-					align-items: center;
+					display: block;
+					padding-right: 70px;
+					width: 100%;
+					text-align: right;
 					position: relative;
 					font-size: 14px;
 
 					span{
 						display: block;
 						width: 20px;
-						height: 2px;
-						background-color: #2c143f;
+						height: 1px;
+						background-color: $grisOsc;
 						position: absolute;
 						top: 7px;
-						right: 15px;
+						right: 23px;
 					}
 
 					&:hover	{
-						color: #35f8a4;
+						color: $violeta;
 						transition: all .5s ease;
 
 						span{
-							background-color: #35f8a4;
+							background-color: $grisOsc;
 						}
-					}
-	
-					&:active{
-						color: #00d2e1;
 					}
 				}
 			}
