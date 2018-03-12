@@ -11,7 +11,7 @@ $(document).ready(function () {
 	// const redes = ['twitter', 'facebook', 'instagram', 'youtube'];
 
 	// Imagen del logo
-	const logo = 'src/img/logo.png'; 					
+	const logo = 'src/img/logo.svg'; 					
 
 	ReactDOM.render(
 		<Nav tipo='nav-left' logo={logo} links={links} />,
