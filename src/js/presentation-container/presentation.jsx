@@ -11,6 +11,9 @@ export default class PresentationFrame extends React.Component {
 			index,        
 			vistaAbierta = document.getElementsByClassName('display-content'),
 			vistas;
+
+		document.getElementById('teamTitle').classList.remove('show');
+		document.getElementById('teamTitle').classList.add('hide');
         
 
 		// Cerramos las vistas si hay alguna abierta
@@ -65,7 +68,7 @@ export default class PresentationFrame extends React.Component {
 		let i = 0;
 		return (
 			<div className='presentation-container flex-center'>
-				<h1>APRENDE, TRANSFORMA Y CONECTA</h1>
+				<h1 id='teamTitle'>APRENDE, TRANSFORMA Y CONECTA</h1>
 
 				<div className='flex-presentation'>
 					{this.props.datos.map(item => <PresentationItem datos={item} key={item.nombre + i++} onClick={this.cambiarVista.bind(this)}/>)}
@@ -93,10 +96,17 @@ class PresentationItem extends React.Component {
 		vistaAbierta[0].classList.add('default-content');
 		vistaAbierta[0].classList.remove('display-content');
         
-		vistas.forEach(vista => {
-			vista.classList.add('reduce-content');
-			vista.classList.remove('default-content');
-		});
+		// Default el resto
+		while (vistas.length > 0) {
+			vistas[0].classList.add('default-content');
+			vistas[0].classList.remove('reduce-content');
+		}
+
+		// Quitamos el target
+		document.getElementsByClassName('target')[0].classList.remove('target');
+
+		document.getElementById('teamTitle').classList.remove('hide');
+		document.getElementById('teamTitle').classList.add('show');
 	}
 
 	render() {
@@ -107,7 +117,7 @@ class PresentationItem extends React.Component {
 
 					<div className='content'>
 
-						<i className='icon icon-' onClick={this.cerrarVista}/>
+						<i className='icon icon-arrow_back' onClick={this.cerrarVista}/>
 
 						<div className='info'>
 							<h2>{this.props.datos.nombre}</h2>
