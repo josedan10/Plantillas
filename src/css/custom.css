@@ -111,7 +111,7 @@ nav {
     list-style: none;
     display: flex; }
     nav ul li {
-      margin: 1px 0;
+      margin: 3px 0;
       width: 100%; }
       nav ul li a {
         text-decoration: none;
@@ -200,8 +200,10 @@ nav.nav-right {
   padding: 40px;
   justify-content: space-between;
   height: 100%; }
-  .services .flex-container div {
+  .services .flex-container > div {
     width: 30%; }
+    .services .flex-container > div h2 {
+      width: 100%; }
 
 .selected-works .grid-container {
   grid-gap: 10px;

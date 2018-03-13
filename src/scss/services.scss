@@ -20,8 +20,12 @@
         justify-content: space-between;
         height: 100%;
 
-        div {
+        & > div {
             width: 30%;
+
+            h2 {
+                width: 100%;
+            }
         }
         // align-items: space-around;
 
