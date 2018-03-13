@@ -1,5 +1,18 @@
 .services {
 
+    @keyframes entrada {
+        0% {
+            opacity: 0;
+            margin-right: 2000px;
+        }
+        25% {
+            margin-right: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
     .flex-container {
         display: flex;
         flex-wrap: wrap;
@@ -11,6 +24,14 @@
             width: 30%;
         }
         // align-items: space-around;
+
+        @for $i from 1 through 6 {
+            div::nth-child(#{$i}) { 
+                animation-name: entrada;
+                animation-duration: .5s;
+                animation-delay: #{$i} * 1s;
+            }
+        }
     }
 
     // .grid-container {
