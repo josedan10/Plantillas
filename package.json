@@ -6,6 +6,7 @@
     "ajv-keywords": "^3.1.0",
     "ansi-html": "0.0.7",
     "array-includes": "^3.0.3",
+    "axios": "^0.18.0",
     "debug": "^3.1.0",
     "html-entities": "^1.2.1",
     "http-proxy-middleware": "^0.17.4",
