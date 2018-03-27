@@ -26,22 +26,22 @@ class DolarTodayConversor extends React.Component {
 		return (
 			<div>
 				<form action='' method='post'>
-                    <label htmlFor='entry'>Entrada</label>
-                    <select name='entry' id='entry'>
-                        <option value='defaul'>Seleccione una opción</option>
-                        <option value='bolivar'>Bolívar (Bs)</option>
-                        <option value='pesos'>Pesos (Ps)</option>
-                        <option value='dolar'>Dólar (USD)</option>
-                    </select>
+					<label htmlFor='entry'>Entrada</label>
+					<select name='entry' id='entry'>
+						<option value='defaul'>Seleccione una opción</option>
+						<option value='bolivar'>Bolívar (Bs)</option>
+						<option value='pesos'>Pesos (Ps)</option>
+						<option value='dolar'>Dólar (USD)</option>
+					</select>
 
-                    <label htmlFor='exit'>Salida</label>
-                    <select name='exit' id='exit'>
-                        <option value='defaul'>Seleccione una opción</option>
-                        <option value='bolivar'>Bolívar (Bs)</option>
-                        <option value='pesos'>Pesos (Ps)</option>
-                        <option value='dolar'>Dólar (USD)</option>
-                    </select>
-                </form>
+					<label htmlFor='exit'>Salida</label>
+					<select name='exit' id='exit'>
+						<option value='defaul'>Seleccione una opción</option>
+						<option value='bolivar'>Bolívar (Bs)</option>
+						<option value='pesos'>Pesos (Ps)</option>
+						<option value='dolar'>Dólar (USD)</option>
+					</select>
+				</form>
 			</div>
 		);
 	}
