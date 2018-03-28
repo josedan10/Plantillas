@@ -5,8 +5,8 @@ const config = {
 
 	// entry: './src/js/index.jsx',
 	entry: {
-		dolartoday: './src/js/dolartoday.jsx'
-		// index: './src/js/index.jsx',
+		// dolartoday: './src/js/dolartoday.jsx'
+		index: './src/js/index.jsx'
 		// formContact: './src/js/form-contact.config.jsx',
 		// presentation: './src/js/presentation.config.jsx',
 		// timer: './src/js/timer.config.jsx',

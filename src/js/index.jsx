@@ -22,56 +22,184 @@ class ButtonRequest extends React.Component {
 		this.state = {
 			entrada: 'default',
 			salida: 'default',
-			dolarToday: null
+			dolarToday: null,
+			comision: 0.0,
+			subTotal: 0.0,
+			total: 0.0
 		};
-		this.bolivarDolar = null;
+
+		this.epsilon = 0.000019;
 	}
 
 	componentWillMount() {
-		var respuesta,
-			// stateCopy,
-			bolivarDollar;
+		var respuesta;
 
 		axios.get('https://s3.amazonaws.com/dolartoday/data.json').then(response => {
 			respuesta = response.data.USD.transferencia;
-			document.getElementById('dolarToday').innerHTML = respuesta;
 
-			//  Bolívar a Dólar
-			bolivarDollar = (1 / parseFloat(respuesta)).toFixed(12);
-			document.getElementById('bsToDollar').innerHTML = '1Bs -> ' + parseFloat(bolivarDollar).toExponential() + '$';
+			this.setState(Object.assign({}, this.state, { dolarToday: respuesta }));
+			
 		});
+	}
+	
+	relacionBolivarDolar() {
+		
+		//  Bolívar a Dólar
+		let bolivarDolar,
+			resultado;
+
+		bolivarDolar = (1 / parseFloat(this.state.dolarToday)).toFixed(12);
+		
+		if (bolivarDolar < this.epsilon) {
+			resultado = <td>1 Bs -> {parseFloat(bolivarDolar).toExponential()} USD</td>;
+		} else {
+			resultado = <td>1 Bs -> {parseFloat(bolivarDolar)} USD</td>;
+		}
+
+		return resultado;
+	}
+
+	relacionDolarBolivar() {
+		
+		//  Dólar a Bolívar
+		let dolarBolivar,
+			resultado;
+
+
+		dolarBolivar = parseFloat(this.state.dolarToday).toFixed(12);
+
+		if (dolarBolivar < this.epsilon) {
+			resultado = <td>1 USD -> {parseFloat(dolarBolivar).toExponential()} Bs</td>;
+		} else {
+			resultado = <td>1 USD -> {parseFloat(dolarBolivar)} Bs</td>;
+		}
+
+		return resultado;
+	}
+
+	relacionDolarSol() {
+		return <td>1 USD -> 3.22 PEN</td>;
+	}
+
+	relacionSolDolar() {
+		return <td>1 PEN -> {(1 / 3.22).toFixed(6)} USD</td>;
+	}
+
+	relacionSolBolivar() {
+		return <td>1 PEN -> {3.22 * parseFloat(this.state.dolarToday)} Bs.</td>;
+	}
+
+	relacionBolivarSol() {
+		let bolivarSol = (3.22 / parseFloat(this.state.dolarToday)).toFixed(11);
+
+		if (bolivarSol < this.epsilon) {
+			bolivarSol = parseFloat(bolivarSol).toExponential();
+		}
+		return <td>1 Bs -> {bolivarSol} PEN</td>;
 	}
 
 	conversion() {
-		 
+		let inputCoin = document.getElementById('inputCoin').value,
+			outputCoin = document.getElementById('outputCoin').value,
+			valor = document.getElementById('valor').value,
+			comision,
+			resultado;
+
+		if ((inputCoin != 'default' && outputCoin != 'default') && (inputCoin != outputCoin) && (valor !== null && valor !== '')) {
+			switch (inputCoin) {
+			case 'Bs':
+				switch (outputCoin) {
+				case 'USD':
+					// Conversión Bs a USD
+					resultado = (valor / parseFloat(this.state.dolarToday)).toFixed(2);
+					break;
+				case 'PEN':
+					// Conversión de Bs a PEN
+					resultado = (valor * 3.22 / parseFloat(this.state.dolarToday)).toFixed(2);
+					break;
+				default:
+					console.log('Error');
+					break;
+				}
+				break;
+			case 'USD':
+				switch (outputCoin) {
+				case 'Bs':
+					// Conversión de USD a Bs
+					resultado = (valor * parseFloat(this.state.dolarToday)).toFixed(2);
+					break;
+				case 'PEN':
+					// Conversión de USD a PEN
+					resultado = (valor * 3.22).toFixed(2);
+					break;
+				default:
+					console.log('Error');
+					break;
+				}
+				break;
+			case 'PEN':
+				switch (outputCoin) {
+				case 'Bs':
+					// Conversion de PEN a Bs
+					resultado = (valor * 3.22 * parseFloat(this.state.dolarToday)).toFixed(2);
+					break;
+				case 'USD':
+					// Conversión de PEN a USD
+					resultado = (valor / 3.22).toFixed(2);
+					break;
+				default:
+					console.log('Error');
+					break;
+				}
+				break;
+
+			default:
+				console.log('Error');
+				break;
+			}
+
+			comision = parseFloat(resultado * 0.035).toFixed(2);
+
+			this.setState(Object.assign({}, this.state, {
+				subTotal: parseFloat(resultado).toFixed(2),
+				comision: parseFloat(comision).toFixed(2),
+				total: parseFloat(parseFloat(resultado) - parseFloat(comision)).toFixed(2)
+			}));
+		}
+
+		// document.getElementById('subTotal').innerHTML = resultado;
+		// document.getElementById('comision').innerHTML = comision;
+		// document.getElementById('total').innerHTML = resultado + comision;
+
+		return;
 	}
 
 	render() {
-
+		
 		return (
-			<div>
-				{/* <button style={{ height: '50px', padding: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-					Realizar conversión
-				</button> */}
+			<div className='container'>
+				<div className='title'>
+					Valor del dolar: {this.state.dolarToday} Bs.
+				</div>
+				<div className='info'>
+					<label htmlFor='inputCoin'>Moneda de entrada</label>
+					<select name='inputCoin' id='inputCoin' onChange={this.conversion.bind(this)}>
+						<option value='default'>Seleccione una moneda</option>
+						<option value='Bs'>Bolívar (Bs)</option>
+						<option value='USD'>Dólar (USD)</option>
+						<option value='PEN'>Peso peruano (PEN)</option>
+					</select>
 
-				<label htmlFor='entryCoin'>Moneda de entrada</label>
-				<select name='entryCoin' id='entryCoin' onChange={this.conversion}>
-					<option value='default'>Seleccione una moneda</option>
-					<option value='bolivar'>Bolívar (Bs)</option>
-					<option value='dolar'>Dólar (USD)</option>
-					<option value='peso'>Peso peruano (S)</option>
-				</select>
+					<label htmlFor='outputCoin'>Moneda de salida</label>
+					<select name='outputCoin' id='outputCoin' onChange={this.conversion.bind(this)}>
+						<option value='default'>Seleccione una moneda</option>
+						<option value='Bs'>Bolívar (Bs)</option>
+						<option value='USD'>Dólar (USD)</option>
+						<option value='PEN'>Sol peruano (PEN)</option>
+					</select>
 
-				<label htmlFor='entryCoin'>Moneda de salida</label>
-				<select name='entryCoin' id='entryCoin' onChange={this.conversion}>
-					<option value='default'>Seleccione una moneda</option>
-					<option value='bolivar'>Bolívar (Bs)</option>
-					<option value='dolar'>Dólar (USD)</option>
-					<option value='peso'>Sol peruano (S)</option>
-				</select>
-
-				<div style={{ height: '100px', width: '200px' }}>
-					Valor del dolar: <span id='dolarToday' />
+					<label htmlFor='valor'>valor a transferir</label>
+					<input type='number' name='valor' id='valor' step='0.01' min='0' onChange={this.conversion.bind(this)}/>
 				</div>
 
 				<table>
@@ -86,35 +214,47 @@ class ButtonRequest extends React.Component {
 						<tr>
 							<td>Bolívar</td>
 							<td>Dólar</td>
-							<td id='bsToDollar'/>
+							{this.relacionBolivarDolar()}
 						</tr>
 						<tr>
 							<td>Bolívar</td>
 							<td>Sol Peruano</td>
-							<td id='bsToSol'/>
+							{this.relacionBolivarSol()}
 						</tr>
 						<tr>
 							<td>Dólar</td>
 							<td>Bolívar</td>
-							<td id=''/>
+							{this.relacionDolarBolivar()}
 						</tr>
 						<tr>
 							<td>Dólar</td>
 							<td>Sol Peruano</td>
-							<td id=''/>
+							{this.relacionDolarSol()}
 						</tr>
 						<tr>
 							<td>Sol Peruano</td>
 							<td>Dólar</td>
-							<td id=''/>
+							{this.relacionSolDolar()}
 						</tr>
 						<tr>
 							<td>Sol Peruano</td>
 							<td>Bolívar</td>
-							<td id=''/>
+							{this.relacionSolBolivar()}
 						</tr>
 					</tbody>
 				</table>
+
+				<div className='resultado'>
+
+					<span className='subTotal'><b>Sub Total:</b> {parseFloat(this.state.subTotal).toFixed(2)}</span>
+					<br/>
+					<br/>
+					<br/>
+					<span className='comision'><b>Comisión:</b> {parseFloat(this.state.comision).toFixed(2)}(3.5%)</span>
+					<br/><br/><br/>
+					<span className='total'><b>Total:</b> {parseFloat(this.state.total).toFixed(2)}</span>
+				
+				</div>
 			</div>
 		);
 	}
