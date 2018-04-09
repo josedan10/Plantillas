@@ -1,0 +1,21 @@
+.login {
+    height: 100vh;
+
+    .logo {
+        width: 100%;
+    }
+}
+
+.form-login {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 100px);
+
+    input {
+        max-height: 40px;
+        width: 300px;
+    }
+
+    .btn {
+        width: 200px;
+    }
+}

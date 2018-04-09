@@ -1,48 +1,130 @@
-.services {
-
-    @keyframes entrada {
-        0% {
-            opacity: 0;
-            margin-right: 2000px;
-        }
-        25% {
-            margin-right: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    .flex-container {
-        display: flex;
+.tell-story,
+.corporative {
+    .container {
         flex-wrap: wrap;
-        padding: 40px;
-        justify-content: space-between;
-        height: 100%;
-
-        & > div {
-            width: 30%;
-
-            h2 {
-                width: 100%;
-            }
-        }
-        // align-items: space-around;
-
-        @for $i from 1 through 6 {
-            div::nth-child(#{$i}) { 
-                animation-name: entrada;
-                animation-duration: .5s;
-                animation-delay: #{$i} * 1s;
-            }
+        h1 {
+            text-align: center;
         }
     }
+}
 
-    // .grid-container {
-    //     padding: 40px;
-    //     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    //     grid-template-rows: repeat(auto-fit, minmax(86px, 1fr));
-    //     grid-auto-rows: minmax(86px, 1fr);
-    // }
+.btns-container,
+.corporatives-container {
+    width: 100%;
+}
 
+.tell-story {
+    padding: 200px 10px;
+
+    p {
+        text-align: center;
+    }
+
+    .btns-container {
+        padding: 50px;
+    
+        .btn {
+            width: 150px;
+            color: $brown;
+        }
+    }
+}
+
+.allies {
+    background-image: url("../img/utensilios.jpg");
+    background-position: right center;
+    width: 100%;
+    height: 100vh;
+    max-height: 600px;
+    position: relative;
+
+    .cover-bg {
+        position: absolute;        
+        padding: 50px 10px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #503615, $alpha: 0.8);
+    }
+
+    .container {
+        flex-wrap: wrap;
+        height: 70%;
+        min-height: 300px;
+    }
+
+    h1 {
+        text-align: center;
+        color: $white;
+    }
+
+    .slideshow-control {
+        background-color: transparent;
+
+        &.control-active {
+            background-color: $white;
+        }
+    }
+}
+
+.allies-container {
+    position: relative;
+
+    .slideshow-element {
+        width: 100%;
+        height: 60%;
+    }
+}
+
+.corporative {
+    padding: 200px 10px;
+}
+
+.corporatives-container {
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr;
+    padding-top: 50px;
+    grid-column-gap: 10px;
+}
+
+.card-corporative {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 50px auto;
+
+    p,
+    h2 {
+        width: 100%;
+    }
+    
+    img {
+        border: solid 1px $brown;
+        height: 200px;
+        width: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+
+    h2,
+    p {
+        text-align: center;
+    }
+}
+
+.suscribe {
+    padding: 100px;
+    background-color: $light-brown;
+
+    form {
+        width: 100%;
+    }
+
+    .btn {
+        width: 200px;
+        margin-right: 10px;
+    }
+
+    input[type='email'] {
+        width: 60%;
+        margin-left: 10px;
+    }
 }

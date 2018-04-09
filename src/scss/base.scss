@@ -1,0 +1,241 @@
+// Colores
+$light-brown: #c69c6b;
+$brown: #7a3900;
+$dark-brown: #44210d;
+$light-gray: #e5e5e5;
+$dark-gray: #9f9f9f;
+$white: #fff;
+$green: #4baa2b;
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+    // font: $font-normal;
+    color: $dark-gray;
+}
+
+img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+	user-select: none;
+}
+
+::-moz-selection { /* Code for Firefox */
+	// background-color: $dorado;
+	// color: $grisOsc;
+}
+
+::selection {
+	// background-color: $dorado;
+	// color: $grisOsc;
+}
+
+textarea:focus, 
+input:focus{
+    outline: none;
+}
+
+html,
+body{
+	height: 100%;
+	background: $dark-gray;
+	// color: $grisOsc;
+}
+
+// Headers
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 10px 0;
+    width: 100%;
+}
+
+h1,
+h2 {
+    color: $brown;
+    width: 100%;
+}
+
+h3 {
+    color: $dark-brown;
+}
+
+.title-section {
+    flex-wrap: wrap;
+    h1 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+// Sections
+section {
+    width: 100%;
+}
+
+// Asides
+aside.nav-left {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+}
+
+// Paragraphs
+p {
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+// Buttons
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 50px;
+    border-style: solid;
+    border-width: 2px;
+    margin: 10px 0;
+    font-size: 18px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btn-primary {
+    color: $white;
+    background-color: $light-brown;
+    border-color: $light-brown;
+}
+
+.btn-secondary {
+    color: $light-brown;
+    background-color: transparent;
+    border-color: $light-brown;
+}
+
+.btn-search {
+    color: $white;
+    background-color: $green;
+    border-color: $green;
+}
+
+.btn-suscribe {
+    color: $white;
+    border-color: $white;
+    background-color: transparent;
+}
+
+// Links nav
+header nav span,
+.link-nav {
+    color: $light-brown;
+    margin: 10px;
+}
+
+.link-nav:active,
+.link-nav:visited {
+    color: $light-brown;
+}
+
+// Containers
+.grid-container {
+    display: grid;
+}
+
+[class^="flex"] {
+    display: flex;
+}
+
+[class^="flex-center"] {
+    justify-content: center;
+    align-items: center;
+}
+
+[class*="wrap"] {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-between {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-around {
+    align-items: center;
+    justify-content: space-around;
+}
+
+.flex-start {
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flex-end {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
+    position: relative;
+}
+
+// .price {
+//     border-style: solid;
+//     border-width: 1px 0;
+//     border-color: $light-brown;
+//     padding: 5px;
+    
+//     span {
+//         color: $light-brown;
+//     }
+// }
+
+// Decorators
+
+.line-decorator {
+    display: block;
+    width: 80px;
+    border-bottom: solid $light-brown 2px;
+}
+
+hr { 
+    display: block;
+    height: 0;
+    border-top: outset $light-brown 1px;
+    z-index: 10;
+    width: 100%;
+}
+
+// Inputs and textareas
+
+input,
+textarea {
+    border-radius: 50px;
+    border: solid 1px;
+    padding: 10px 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+// Images
+.logo img {
+    width: 100%;
+    max-width: 300px;
+}

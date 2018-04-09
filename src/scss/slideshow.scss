@@ -1,9 +1,9 @@
 .slideshow{
-    width: 100%;
+    width: 700px;
     height: 100%;
-    margin: 0;
+    margin: 0 auto;
     // max-height: 500px;
-    background-color: #f3f1f4;
+    background-color: $white;
     position: relative;
     display: flex;
     justify-content: center;
@@ -21,6 +21,7 @@
 
     i{
         font-size: 42px;
+        color: $light-brown;
         
         &:hover{
             cursor: pointer;
@@ -34,6 +35,7 @@
     
     .slideshow-element{
         opacity: 0;
+
         background-attachment: center top;
         position: absolute;
         width: 100%;
@@ -41,14 +43,22 @@
 
         transition: all .3s ease;
 
+        .img {
+            position: absolute;
+            left: 10%;
+        }
+
         .slide-element-info{
+            display: grid;
+            justify-content: center;
+            flex-wrap: wrap;
+
             position: absolute;
             padding: 10px 20px;
-            bottom: 0;
-            left: 0;
-            height: 170px;
-            width: 100%;
-            background-color: rgba($color: #000000, $alpha: 0.7);
+            right: 10%;
+            height: 200px;
+            width: 40%;
+            background-color: $white;
             overflow: hidden;
 
             h3{
@@ -71,7 +81,7 @@
 
 .slideshow-container-controls{
     width: 100%;
-    bottom: 20px;
+    bottom: 5px;
 
     ul{
         display: flex;
@@ -82,23 +92,23 @@
 }
 
 .slideshow-control{
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     margin: 0 5px;
     border-radius: 50%;
-    background-color: #4c4ba0;
+    background-color: $white;
     border-style: solid;
     border-width: 1px;
-    border-color: #77ffab;
+    border-color: $light-brown;
     transition: background .7s ease;
 
     &:hover{
-        background-color: #fafafa;
+        background-color: $light-brown;
         cursor: pointer;
         transition: background .7s ease;
     }
 
     &.control-active{
-        background-color: #77ffab;
+        background-color: $light-brown;
     }
 }
