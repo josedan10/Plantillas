@@ -75,7 +75,16 @@
             event.preventDefault();
         }
 
-        document.getElementById('loginForm').addEventListener('submit', validarLogin);
+        function toogleClass(event, prevClass, nextClass) {
+            console.log(event.target.classList);
+            // event.target.classList.remove(prevClass);
+            // event.target.classList.add(nextClass);
+        }
+
+        var element = document.getElementsByClassName('flex-end')[0];
+        element.addEventListener('click', toogleClass);
+
+        // document.getElementById('loginForm').addEventListener('submit', validarLogin);
     </script>
 </body>
 </html>
