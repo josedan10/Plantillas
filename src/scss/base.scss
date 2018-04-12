@@ -1,0 +1,80 @@
+// My own CSS templates
+
+// Fonts: normal small-caps normal 16px/1.4 Georgia;
+// font-family: Georgia;
+// line-height: 1.4;
+// font-weight: normal;
+// font-stretch: normal;
+// font-variant: small-caps;
+// font-size: 16px;
+
+$text: normal 14px Arial, Helvetica, sans-serif;
+$title: bold 18px Arial, Helvetica, sans-serif;
+$subTitle: bold 16px Arial, Helvetica, sans-serif;
+$textBtn: normal 16px Arial, Helvetica, sans-serif;
+
+// General styles
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font: $text;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+
+    div {
+        background-color: #ccc;
+        height: 80px;
+        width: 80px;
+    }
+}
+
+// Distribution containers
+
+// Flex containers
+[class^='flex'] {
+    display: flex
+}
+
+[class*='wrap'] {
+    flex-wrap: wrap;
+}
+
+// Position
+[class*='center'] {
+    justify-content: center;
+    align-items: center;
+}
+
+[class*='between'] {
+    align-items: center;
+    justify-content: space-between;
+}
+
+[class*='around'] {
+    align-items: center;
+    justify-content: space-around;
+}
+
+// Direction
+[class*='column'] {
+    flex-direction: column;
+}
+
+// Grid containers
+[class^='grid'] {
+    display: grid;
+}
+
+// Buttons
+
+// Message boxes

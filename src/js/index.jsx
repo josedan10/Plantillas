@@ -16,13 +16,14 @@ import axios from 'axios';
 // 	document.getElementById('nav')
 // );
 
-class ButtonRequest extends React.Component {
+class DolarToday extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			entrada: 'default',
-			salida: 'default',
-			dolarToday: null,
+			entrada: '',
+			salida: '',
+			bolivarDolar: null,
+			solDolar: 3.22,		
 			comision: 0.0,
 			subTotal: 0.0,
 			total: 0.0
@@ -37,7 +38,7 @@ class ButtonRequest extends React.Component {
 		axios.get('https://s3.amazonaws.com/dolartoday/data.json').then(response => {
 			respuesta = response.data.USD.transferencia;
 
-			this.setState(Object.assign({}, this.state, { dolarToday: respuesta }));
+			this.setState(Object.assign({}, this.state, { bolivarDolar: respuesta }));
 			
 		});
 	}
@@ -48,7 +49,7 @@ class ButtonRequest extends React.Component {
 		let bolivarDolar,
 			resultado;
 
-		bolivarDolar = (1 / parseFloat(this.state.dolarToday)).toFixed(12);
+		bolivarDolar = (1 / parseFloat(this.state.bolivarDolar)).toFixed(12);
 		
 		if (bolivarDolar < this.epsilon) {
 			resultado = <td>1 Bs -> {parseFloat(bolivarDolar).toExponential()} USD</td>;
@@ -59,19 +60,19 @@ class ButtonRequest extends React.Component {
 		return resultado;
 	}
 
-	relacionDolarBolivar() {
+	relacionbolivarDolar() {
 		
 		//  Dólar a Bolívar
-		let dolarBolivar,
+		let bolivarDolar,
 			resultado;
 
 
-		dolarBolivar = parseFloat(this.state.dolarToday).toFixed(12);
+		bolivarDolar = parseFloat(this.state.bolivarDolar).toFixed(12);
 
-		if (dolarBolivar < this.epsilon) {
-			resultado = <td>1 USD -> {parseFloat(dolarBolivar).toExponential()} Bs</td>;
+		if (bolivarDolar < this.epsilon) {
+			resultado = <td>1 USD -> {parseFloat(bolivarDolar).toExponential()} Bs</td>;
 		} else {
-			resultado = <td>1 USD -> {parseFloat(dolarBolivar)} Bs</td>;
+			resultado = <td>1 USD -> {parseFloat(bolivarDolar)} Bs</td>;
 		}
 
 		return resultado;
@@ -82,15 +83,15 @@ class ButtonRequest extends React.Component {
 	}
 
 	relacionSolDolar() {
-		return <td>1 PEN -> {(1 / 3.22).toFixed(6)} USD</td>;
+		return <td>1 PEN -> {(1 / this.state.solDolar).toFixed(6)} USD</td>;
 	}
 
 	relacionSolBolivar() {
-		return <td>1 PEN -> {3.22 * parseFloat(this.state.dolarToday)} Bs.</td>;
+		return <td>1 PEN -> {this.state.solDolar * parseFloat(this.state.bolivarDolar)} Bs.</td>;
 	}
 
 	relacionBolivarSol() {
-		let bolivarSol = (3.22 / parseFloat(this.state.dolarToday)).toFixed(11);
+		let bolivarSol = (this.state.solDolar / parseFloat(this.state.bolivarDolar)).toFixed(11);
 
 		if (bolivarSol < this.epsilon) {
 			bolivarSol = parseFloat(bolivarSol).toExponential();
@@ -111,11 +112,11 @@ class ButtonRequest extends React.Component {
 				switch (outputCoin) {
 				case 'USD':
 					// Conversión Bs a USD
-					resultado = (valor / parseFloat(this.state.dolarToday)).toFixed(2);
+					resultado = (valor / parseFloat(this.state.bolivarDolar)).toFixed(2);
 					break;
 				case 'PEN':
 					// Conversión de Bs a PEN
-					resultado = (valor * 3.22 / parseFloat(this.state.dolarToday)).toFixed(2);
+					resultado = (valor * this.state.solDolar / parseFloat(this.state.bolivarDolar)).toFixed(2);
 					break;
 				default:
 					console.log('Error');
@@ -126,11 +127,11 @@ class ButtonRequest extends React.Component {
 				switch (outputCoin) {
 				case 'Bs':
 					// Conversión de USD a Bs
-					resultado = (valor * parseFloat(this.state.dolarToday)).toFixed(2);
+					resultado = (valor * parseFloat(this.state.bolivarDolar)).toFixed(2);
 					break;
 				case 'PEN':
 					// Conversión de USD a PEN
-					resultado = (valor * 3.22).toFixed(2);
+					resultado = (valor * this.state.solDolar).toFixed(2);
 					break;
 				default:
 					console.log('Error');
@@ -141,11 +142,11 @@ class ButtonRequest extends React.Component {
 				switch (outputCoin) {
 				case 'Bs':
 					// Conversion de PEN a Bs
-					resultado = (valor * 3.22 * parseFloat(this.state.dolarToday)).toFixed(2);
+					resultado = (valor * this.state.solDolar * parseFloat(this.state.bolivarDolar)).toFixed(2);
 					break;
 				case 'USD':
 					// Conversión de PEN a USD
-					resultado = (valor / 3.22).toFixed(2);
+					resultado = (valor / this.state.solDolar).toFixed(2);
 					break;
 				default:
 					console.log('Error');
@@ -157,15 +158,25 @@ class ButtonRequest extends React.Component {
 				console.log('Error');
 				break;
 			}
-
 			comision = parseFloat(resultado * 0.035).toFixed(2);
 
 			this.setState(Object.assign({}, this.state, {
+				entrada: inputCoin,
+				salida: outputCoin,
 				subTotal: parseFloat(resultado).toFixed(2),
 				comision: parseFloat(comision).toFixed(2),
 				total: parseFloat(parseFloat(resultado) - parseFloat(comision)).toFixed(2)
 			}));
+		} else {
+			this.setState(Object.assign({}, this.state, {
+				entrada: '',
+				salida: '',
+				subTotal: 0.00,
+				comision: 0.00,
+				total: 0.00
+			}));
 		}
+
 
 		// document.getElementById('subTotal').innerHTML = resultado;
 		// document.getElementById('comision').innerHTML = comision;
@@ -179,7 +190,7 @@ class ButtonRequest extends React.Component {
 		return (
 			<div className='container'>
 				<div className='title'>
-					Valor del dolar: {this.state.dolarToday} Bs.
+					Valor del dolar: {this.state.bolivarDolar} Bs.
 				</div>
 				<div className='info'>
 					<label htmlFor='inputCoin'>Moneda de entrada</label>
@@ -224,7 +235,7 @@ class ButtonRequest extends React.Component {
 						<tr>
 							<td>Dólar</td>
 							<td>Bolívar</td>
-							{this.relacionDolarBolivar()}
+							{this.relacionbolivarDolar()}
 						</tr>
 						<tr>
 							<td>Dólar</td>
@@ -246,13 +257,13 @@ class ButtonRequest extends React.Component {
 
 				<div className='resultado'>
 
-					<span className='subTotal'><b>Sub Total:</b> {parseFloat(this.state.subTotal).toFixed(2)}</span>
+					<span className='subTotal'><b>Sub Total:</b> {parseFloat(this.state.subTotal).toFixed(2) + ' ' + this.state.salida}</span>
 					<br/>
 					<br/>
 					<br/>
-					<span className='comision'><b>Comisión:</b> {parseFloat(this.state.comision).toFixed(2)}(3.5%)</span>
+					<span className='comision'><b>Comisión:</b> {parseFloat(this.state.comision).toFixed(2) + ' ' + this.state.salida}(3.5%)</span>
 					<br/><br/><br/>
-					<span className='total'><b>Total:</b> {parseFloat(this.state.total).toFixed(2)}</span>
+					<span className='total'><b>Total:</b> {parseFloat(this.state.total).toFixed(2) + ' ' + this.state.salida}</span>
 				
 				</div>
 			</div>
@@ -261,7 +272,7 @@ class ButtonRequest extends React.Component {
 }
 
 ReactDOM.render(
-	<ButtonRequest />,
+	<DolarToday />,
 	document.getElementById('app')
 );
 
