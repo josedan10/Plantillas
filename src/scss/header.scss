@@ -1,0 +1,38 @@
+header {
+    height: 100vh;
+    background-color: $white;
+    grid-template-rows: 1fr 20px;
+
+    nav {
+        z-index: 10;
+        padding-bottom: 20px;
+        background-color: $white;
+        ul li {
+            display: inline-block;
+        }
+    }
+
+    .logo {
+        padding: 20px;
+        height: 200px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .products {
+        max-height: 500px;
+        padding: 0 50px;
+        background-color: $light-gray;
+        position: relative;    
+        overflow: hidden;
+    }
+    
+    .card-products {
+        p{
+            color: $light-brown;
+            padding: 10px 0;
+        }
+    }
+}

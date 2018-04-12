@@ -1,0 +1,158 @@
+// Colores
+$gris: #ececec;
+$grisOsc: #595959;
+$violeta: #230f28;
+
+// Fuentes
+$font-title: 'BrownStd-Regular', Arial, Helvetica, sans-serif;
+$font-normal: 'BrownStd-Light', Arial, Helvetica, sans-serif;
+
+@font-face {
+	font-family: BrownStd-Regular;
+	src: url('tipografias/BrownStd-Regular.otf');
+
+}
+
+@font-face {
+	font-family: BrownStd-Light;
+	src: url('tipografias/BrownStd-Light.otf');
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+	font-family: $font-normal;
+}
+
+html,
+body{
+	height: 100%;
+	background: $violeta;
+	color: $gris;
+}
+
+main{
+	width: 100%;
+}
+
+aside.left,
+aside.right {
+	height: 100vh;
+	position: fixed;
+	z-index: 300;
+}
+
+.right{
+	right: 0;
+	width: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	ul {
+		li {
+			margin-bottom: 15px;
+			text-align: center;
+			
+			a {
+				color: $grisOsc;
+				transition: all .5s ease;
+
+				&:hover {
+					color: $violeta;
+					transition: all .5s ease;
+				}
+			}
+		}
+	}
+}
+
+section{
+	height: 100vh;
+	padding: 0 50px;
+	
+	& > div {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.grid-container{
+	display: grid;
+	justify-content: center;
+}
+
+.flex-center{
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-presentation {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	
+	.content-container{
+		// border: solid 1px rgb(90, 37, 97);
+		background-color: rgba($color: #000000, $alpha: .7);
+		height: 100%;
+	}
+
+	.default-content {
+		width: 16.66%;
+		transition: all .7s ease;
+
+		.img {
+			width: 100%;
+			transition: all .7s ease;
+		}
+	}
+
+	.display-content {
+		width: 80%;
+		transition: all .7s ease;
+
+		.img,
+		.content {
+			width: 50%;
+		}
+
+		.img {
+			transition: all .7s ease;
+		}
+
+		.content {
+			position: absolute;
+			right: 0;
+		}
+	}
+
+	.reduce-content {
+		width: 4%;
+		transition: all .7s ease;
+
+		.img {
+			width: 100%;
+			transition: all .7s ease;
+		}
+	}
+}
+
+@import 'nav';
+@import 'social';
+@import 'menu-collage';
+@import 'services';
+@import 'selected-works';
+@import 'own-community';
+@import 'team';
+@import 'clientes';	
+// @import 'timer';
+@import 'slideshow';
+@import 'contacto';
+@import 'responsive';

@@ -1,0 +1,34 @@
+.gallery {
+    padding: 100px 0;
+
+    .title-section {
+        flex-wrap: wrap;
+        margin-bottom: 100px;
+
+        h1 {
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-auto-rows: 1fr;
+        grid-gap: 60px;
+    }
+}
+
+.card-gallery {
+    position: relative;
+    flex-wrap: wrap;
+    grid-column: span 3;
+    grid-row: span 2;
+
+    img,
+    h2,
+    p,
+    div {
+        width: 100%;
+    }
+}

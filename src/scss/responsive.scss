@@ -1,35 +1,432 @@
-@media (max-width: 991px) { 
-    
+// @media all and (max-width: 1690px) {}
+@media all and (max-width: 1280px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .gallery {
+        .grid-container {
+            grid-gap: 10px;
+        }
+    }
+
+    .post{
+        img {
+            width: 45%;
+        }
+
+        .card-post {
+            padding: 0 40px;
+        }
+    }
+
+    .corporative {
+        height: 100vh;
+        padding: 0;
+    }
+
+    .card-corporative {
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    .content-container {
+        right: 10px;
+
+        .line-decorator {
+            left: 10px;
+        }
+    }
+
+    .form-contact {
+        left: 20px;
+    }
 }
-@media (max-width: 768px) { 
-    
-    .services {
-        .flex-container {
-            div {
-                background-color: purple;
-                width: 40%;
+@media all and (max-width: 980px) { 
+    // The buttons must be smallest
+    .buttons-container .btn {
+        width: 150px;
+    }
+
+    // Changes to movil nav
+
+    .card-gallery {
+        grid-column: span 4;
+    }
+
+    .card-corporative {
+        max-height: 350px;
+        p {
+            overflow: hidden;
+        }
+    }
+
+    .contact-content{
+        .content-container {
+            img {
+                display: none;
+            }
+
+            h2 {
+                margin-top: 30px;
+            }
+
+            p {
+                text-align: justify;
+            }
+        }
+    }
+}
+@media all and (max-width: 736px) { 
+
+    header {
+        .products {
+            padding: 0;
+            width: 100vw;
+        }
+    }
+
+    .week-cakes {
+        height: 500px;
+        padding: 0;
+    }
+
+    .slideshow {
+        width: 100%;
+        height: 80%;
+        flex-wrap: wrap;
+    }
+
+    .slideshow-container-slides .slideshow-element {
+        flex-wrap: wrap;
+
+        .img,
+        .slide-element-info {
+            width: 100%;
+            position: relative;
+            left: 0;
+            right: 0;
+        }
+
+        .slide-element-info {
+            height: auto;
+
+            h2{
+                text-align: center;
+            }
+
+            p {
+                max-width: 250px;
             }
         }
     }
 
-    .form-view {
-        min-width: 300px;
+    .slideshow-container-controls {
+        bottom: -10px;
+    }
+
+    .gallery {
+        .grid-container {
+            grid-gap: 30px;
+        }
+    }
+
+    .card-gallery {
+        grid-column: span 6;
+    }
+
+    .search {
+        .left {
+            display: none;
+        }
+    }
+
+    .post {
+        flex-wrap: wrap;
+        height: auto;
+       
+        img {
+            position: relative;
+            top: 10px;
+            left: auto;
+            display: block;
+        }
+
+        .container {
+            padding: 0 20px;
+        }
+    }
+
+    .card-post {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;   
+        }
+
+        p {
+            text-align: justify;
+        }
+    }
+
+    .discovery-memories {
+        img {
+            display: none;
+        }
+    }
+
+    .show-memories {
+        width: 100%;
+    }
+
+    .corporative {
+        height: auto;
+    }
+
+    .card-corporative {
+        max-height: 600px;
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        p {
+            overflow: visible;
+            text-align: justify;
+        }
+    }
+
+    .suscribe {
+        padding: 100px 0;
+    }
+
+    .contact-content{
+        height: auto;
+        flex-wrap: wrap;
+
+        & > img { 
+            position: static;
+            display: block;
+        }
+    }
+
+    .content-container {
+        position: static;
+        width: 100%;
+
+        h2 {
+            text-align: center;
+        }
+
+        .line-decorator {
+            left: auto;
+            margin: 0 auto;
+            top: 40px;
+        }
+    }
+
+    .order-form {
+
+        .data {
+            height: auto;
+            padding: 20px 0;
+
+            .container {
+                input {
+                    width: 100%;
+                }
+
+                input,
+                textarea {
+                    margin: 5px 0;
+                }
+            }
+        }
+
+        .order input {
+
+            width: 100%;
+            margin: 5px 0;
+        
+        }
+    }
+
+    #story,
+    #address {
+        height: 100px;
+        border-radius: 20px;
+    }
+
+    #story {
+        order: 3;
+    }
+    #address {
+        order: 2;
+    }
+
+    .form-contact {
+        left: auto;
+        width: 85%;
+
+        input[type="tel"],
+        input[type="email"] {
+            width: 98%;
+            left: auto;
+            right: auto;
+        }
+
+        textarea {
+            width: 100%;
+            border-radius: 20px;
+            height: 100px;
+        }
+    }
+
+    .testimonials {
+        height: auto;
+        overflow: visible;
+
+        .container > img:first-child{
+            display: none;
+        }
+    }
+
+    .testimonials-container {
+        flex-wrap: wrap;
+    }
+
+    .card-testimonial {
+        width: 48%;
+    }
+
+    .carousel-products {
+
+
+    }
+
+    .card-carousel {
+        width: 100%;
+    }
+}
+@media all and (max-width: 480px) { 
+    
+    .btn {
+        font-size: 16px;
+    }
+
+    .post {
+        .card-post {
+            padding: 0;
+        }        
+    }
+
+    .search {
+        .right {
+            display: none;
+        }
+
         form {
-            input::placeholder,
-            input {
-                font-size: 12px;
-            }
-        }
-    }
-}
-@media (max-width: 480px) { 
-    .services {
-        .flex-container {
-            div {
-                background-color: purple;
+            flex-wrap: wrap;
+
+            input[type="search"],
+            input[type="submit"] {
                 width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+    }
+
+    .card-search {
+        width: 100%;
+        text-align: center;
+    }
+
+    .show-memories {
+        padding: 0 10px;
+    }
+
+    .card-testimonial {
+        width: 100%;
+        padding: 0 50px;
+    }
+
+    .carousel-products {
+        height: auto;
+
+        .container {
+            flex-wrap: wrap;
+        }
+    }
+
+    .gallery {
+        .grid-container {
+            grid-gap: 10px;
+        }
+    }
+
+    .card-gallery {
+        grid-column: span 12;
+
+        img {
+            margin: 0 auto;
+            max-width: 300px;
+        }
+    }
+
+    .tell-story {
+        padding: 30px 0;
+
+        p {
+            text-align: justify;
+        }
+
+        .btns-container {
+            padding: 50px 0;
+
+            .btn {
+                margin: 10px;
             }
         }
     }
+
+    .card-corporative {
+        grid-column: span 3;
+        margin: 20px 0;
+    }
+
+    .suscribe {
+        form {
+            flex-wrap: wrap;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            margin-left: 0px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            margin-right: 0;
+            order: 2;
+        }
+    }
+
+    .order-form {
+        .order {
+            padding: 30px 10px;
+        }
+    }
+
+    .content-contact {
+        p {
+            padding: 10px 0;
+        }
+    }
 }
- 

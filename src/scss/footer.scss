@@ -1,0 +1,54 @@
+footer {
+    position: relative;
+    background-color: $light-gray;
+
+    & > .grid-container {
+        padding: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+    } 
+
+    .sub-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px 300px;
+        grid-row-gap: 10px;
+
+        height: 100%;
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .header {
+        position: relative;
+        
+        img,
+        h3 {
+            position: absolute;
+            bottom: 10px;
+        }
+
+        img {
+            margin-bottom: 10px;
+            height: 150px;
+        }
+    }
+
+    .line-decorator {
+        position: absolute;
+        bottom: 5px;
+    }
+}
+
+.nav-footer {
+    padding: 10px 0;
+}
+
+.flex-li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+        margin-right: 5px;
+    }
+}

@@ -1,0 +1,41 @@
+.search {
+    background-color: #f3f3f3;
+    position: relative;
+
+    height: 295px;
+    form {
+        width: 100%;
+
+        input[type='search'] {
+            width: 65%;
+            margin: 0 10px;
+        }
+
+        input[type='submit'] {
+            width: 17%;
+            min-width: 100px;
+        }
+
+    }
+
+    img {
+        position: absolute;
+
+        &.left {
+            left: -100px;
+            height: 295px;
+        }
+        
+        &.right {
+            right: 0;
+        }
+    }
+
+    .container {
+        z-index: 10;
+    }
+}
+
+.card-search {
+    width: 20%;
+}

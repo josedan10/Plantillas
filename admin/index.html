@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="../src/css/custom.css">
+
+
+    <style>
+        /* Sprint styles */
+        form {
+            background-color: rgb(133, 45, 45);
+            width: 500px;
+        }
+
+        main,
+        main > div {
+            height: 100%;
+            width: 100%;
+            background-color: plum;
+        }
+        .flex-item {
+            padding: 30px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <section class="flex-center login">
+        <div class="flex-center-wrap container">
+            <div class="flex-center img logo">
+                <img src="../src/img/logo.svg" alt="">
+            </div>
+
+            <div class="flex-center">
+                <form class="grid-container form-login" id="loginForm" action="" method="GET">
+                    <div class="flex-center input-group">
+
+                        <input type="text" placeholder="username">
+                    </div>
+                    <div class="flex-center input-group">
+
+                        <input type="password" placeholder="password">
+                    </div>
+                    <div class="flex-center input-group">
+                        
+                        <input class="btn btn-primary" type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section> -->
+
+    <main>
+        <div class="flex-end">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">4</div>
+            <div class="flex-item">5</div>
+            <div class="flex-item">6</div>
+            <div class="flex-item">7</div>
+            <div class="flex-item">8</div>
+            <div class="flex-item">9</div>
+            <div class="flex-item">10</div>
+        </div>
+    </main>
+    
+    <script>
+        function validarLogin(event) {
+            alert('Funciona');
+            event.preventDefault();
+        }
+
+        function toogleClass(event, prevClass, nextClass) {
+            console.log(event.target.classList);
+            // event.target.classList.remove(prevClass);
+            // event.target.classList.add(nextClass);
+        }
+
+        var element = document.getElementsByClassName('flex-end')[0];
+        element.addEventListener('click', toogleClass);
+
+        // document.getElementById('loginForm').addEventListener('submit', validarLogin);
+    </script>
+</body>
+</html>
