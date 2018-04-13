@@ -12,7 +12,7 @@ server = smtplib.SMTP('smtp.gmail.com', 587)
 # destination = input('Ingrese el correo de la persona que va a recibir el mensaje: ')
 # sender = input('Ingrese el correo del que desea enviar el mensaje: ')
 
-destination = "josedanq100@gmail.com"
+destination = "orianamc22@gmail.com"
 sender = "josedanq100@gmail.com"
 
 server.connect("smtp.gmail.com",587)
@@ -25,7 +25,7 @@ server.login(sender, "Euclides.Log17")
 
 #Send the mail
 msg = MIMEMultipart('alternative')
-msg["Subject"] = "Prueba"
+msg["Subject"] = "Únete a Equilibrio 370"
 msg["From"] = 'info@equilibrio370.com'
 msg["To"] = destination
 text = "Prueba. (Este mensaje fue enviado usando python)" # The /n separates the message from the headers
