@@ -4,16 +4,16 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-# f = urllib.urlopen("google.com")
-# print(f)
-
 f = urllib.request.urlopen('file:///C:/Users/josed/Documents/Plantillas/mailMarketing/text.html')
 html = f.read().decode('utf-8')
 
 server = smtplib.SMTP('smtp.gmail.com', 587)
 
-destination = input('Ingrese el correo de la persona que va a recibir el mensaje: ')
-sender = input('Ingrese el correo del que desea enviar el mensaje: ')
+# destination = input('Ingrese el correo de la persona que va a recibir el mensaje: ')
+# sender = input('Ingrese el correo del que desea enviar el mensaje: ')
+
+destination = "josedanq100@gmail.com"
+sender = "josedanq100@gmail.com"
 
 server.connect("smtp.gmail.com",587)
 server.ehlo()
@@ -26,7 +26,7 @@ server.login(sender, "Euclides.Log17")
 #Send the mail
 msg = MIMEMultipart('alternative')
 msg["Subject"] = "Prueba"
-msg["From"] = sender
+msg["From"] = 'info@equilibrio370.com'
 msg["To"] = destination
 text = "Prueba. (Este mensaje fue enviado usando python)" # The /n separates the message from the headers
 
