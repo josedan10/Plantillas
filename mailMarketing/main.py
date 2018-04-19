@@ -4,14 +4,15 @@ import smtplib
 
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
 import getEmails
 
 f = urllib.request.urlopen('file:///C:/Users/josed/Documents/Plantillas/mailMarketing/text.html')
 html = f.read().decode('utf-8')
 
 server = smtplib.SMTP('smtp.gmail.com', 587)
-sender = input('Ingrese el correo del que desea enviar el mensaje: ')
+
+# destination = input('Ingrese el correo de la persona que va a recibir el mensaje: ')
+# sender = input('Ingrese el correo del que desea enviar el mensaje: ')
 
 server.connect("smtp.gmail.com",587)
 server.ehlo()
