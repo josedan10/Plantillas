@@ -20,17 +20,17 @@ def getEmails():
     service = build('sheets', 'v4', http=creds.authorize(Http()))
 
     # Call the Sheets API
-    # SPREADSHEET_ID = '1PGx2D6OLYHEm3S9HmtMgYQ8xP6SBiivIICiLu5SWgXA'
-    SPREADSHEET_ID = '1eQDmc7PMPQZkXfvVSBLnDGT7p4eSBj4Y_6L3BBL-Ffc'
-    # RANGE_NAME = 'Hoja 1!B5:I199'
-    RANGE_NAME = 'Sheet1!A1:A4'
+    SPREADSHEET_ID = '1PGx2D6OLYHEm3S9HmtMgYQ8xP6SBiivIICiLu5SWgXA'
+    # SPREADSHEET_ID = '1eQDmc7PMPQZkXfvVSBLnDGT7p4eSBj4Y_6L3BBL-Ffc'
+    RANGE_NAME = 'Hoja 1!B5:I199'
+    # RANGE_NAME = 'Sheet1!A1:A4'
     result = service.spreadsheets().values().get(spreadsheetId=SPREADSHEET_ID,
                                                 range=RANGE_NAME).execute()
     values = result.get('values', [])
     if not values:
         print('No data found.')
     else:
-        print('Emails:')
+        # print('Emails:')
         for row in values:
             # Print columns A and E, which correspond to indices 0 and 4.
             for mail in row:
@@ -40,5 +40,7 @@ def getEmails():
                     
                 except Exception:
                     print('Error al imprimir el email')
-    
+        print('Total de emails registrados: ' + str(len(emails)))
     return emails
+
+getEmails()

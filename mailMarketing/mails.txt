@@ -1,0 +1,10 @@
+mi_numero // Numero de tres cifras
+
+// Convertimos el numero en string
+mi_numero_str = inttostr(mi_numero)
+
+if (mi_numero_str[0] != mi_numero_str[1] && mi_numero_str[0] != mi_numero_str[2] && mi_numero_str[1] != mi_numero_str[2]) {
+    // El numero tiene las tres cifras diferentes
+} else {
+    // Tiene cifras repetidas
+}
